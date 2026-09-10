@@ -1,1 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusConnect - Hackathon Team Builder</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
 
+    <!-- Navbar -->
+    <nav class="bg-indigo-600 text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fa-solid fa-users-gear text-2xl"></i>
+                <span class="font-bold text-xl tracking-wide">CampusConnect</span>
+            </div>
+            <div class="text-sm bg-indigo-700 px-3 py-1 rounded-full border border-indigo-500">
+                <i class="fa-solid fa-graduation-cap mr-1"></i> My College Portal
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="max-w-7xl mx-auto px-4 py-8 grid grid-cols-1 md:grid-cols-4 gap-6">
+        
+        <!-- Sidebar Filter -->
+        <div class="md:col-span-1 bg-white p-5 rounded-xl shadow-sm border border-gray-200 h-fit">
+            <h3 class="font-bold text-gray-700 mb-4 flex items-center">
+                <i class="fa-solid fa-filter text-indigo-600 mr-2"></i> Filter Opportunities
+            </h3>
+            
+            <div class="space-y-4">
+                <div>
+                    <label class="text-xs font-semibold text-gray-500 uppercase">Search Skill Needed</label>
+                    <input type="text" placeholder="e.g. Python, UI/UX" class="w-full mt-1 p-2 border rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 outline-none">
+                </div>
+                <div>
+                    <label class="text-xs font-semibold text-gray-500 uppercase">Category</label>
+                    <select class="w-full mt-1 p-2 border rounded-lg text-sm bg-white focus:ring-2 focus:ring-indigo-500 outline-none">
+                        <option>All Categories</option>
+                        <option>AI / Machine Learning</option>
+                        <option>Web Development</option>
+                        <option>App Development</option>
+                        <option>Blockchain</option>
+                    </select>
+                </div>
+                <button onclick="alert('Filters applied!')" class="w-full bg-indigo-50 text-indigo-600 font-semibold py-2 rounded-lg text-sm hover:bg-indigo-100 transition">
+                    Apply Filters
+                </button>
+            </div>
+        </div>
+
+        <!-- Main Feed -->
+        <div class="md:col-span-3 space-y-6">
+            
+            <!-- Banner & Create Post Button -->
+            <div class="bg-gradient-to-r from-indigo-500 to-purple-600 rounded-xl p-6 text-white shadow-md flex justify-between items-center">
+                <div>
+                    <h2 class="text-2xl font-bold">Have an Idea or Need a Team?</h2>
+                    <p class="text-indigo-100 text-sm mt-1">Connect with skilled peers in your college and build hackathon winning projects.</p>
+                </div>
+                <button onclick="toggleModal()" class="bg-white text-indigo-600 font-bold px-4 py-2.5 rounded-lg shadow hover:bg-indigo-50 transition text-sm whitespace-nowrap">
+                    + Post Idea
+                </button>
+            </div>
+
+            <!-- Feed Cards -->
+            <div class="space-y-4" id="ideaFeed">
+                
+                <!-- Card 1 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="bg-indigo-100 text-indigo-700 text-xs font-bold px-2.5 py-1 rounded-full">AI / ML</span>
+                            <h3 class="text-xl font-bold text-gray-800 mt-2">Smart Campus Food Waste Predictor</h3>
+                        </div>
+                        <span class="text-xs text-gray-400">Posted 2 hrs ago</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mt-2">Building an AI model to analyze college mess food consumption and reduce wastage. Need developers to build the frontend dashboard and train the prediction algorithm.</p>
+                    
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="text-xs font-medium text-gray-500 mr-2 flex items-center">Skills Needed:</span>
+                        <span class="bg-gray-100 text-gray-700 text-xs px-2.5 py-1 rounded border">Python</span>
+                        <span class="bg-gray-100 text-gray-700 text-xs px-2.5 py-1 rounded border">UI/UX Figma</span>
+                        <span class="bg-gray-100 text-gray-700 text-xs px-2.5 py-1 rounded border">React.js</span>
+                    </div>
+
+                    <div class="mt-5 pt-4 border-t flex justify-between items-center">
+                        <div class="flex items-center space-x-2 text-sm text-gray-500">
+                            <i class="fa-solid fa-user-circle text-lg text-indigo-600"></i>
+                            <span>Posted by <strong>Aman Kumar (CS - 3rd Year)</strong></span>
+                        </div>
+                        <button onclick="applyToIdea('Smart Campus Food Waste Predictor')" class="bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium px-4 py-2 rounded-lg transition">
+                            Request to Join Team
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="bg-green-100 text-green-700 text-xs font-bold px-2.5 py-1 rounded-full">App Development</span>
+                            <h3 class="text-xl font-bold text-gray-800 mt-2">Peer-to-Peer Campus Marketplace</h3>
+                        </div>
+                        <span class="text-xs text-gray-400">Posted 5 hrs ago</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mt-2">An app where seniors can sell or rent books, lab equipment, and hostel essentials directly to juniors inside college campus securely.</p>
+                    
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="text-xs font-medium text-gray-500 mr-2 flex items-center">Skills Needed:</span>
+                        <span class="bg-gray-100 text-gray-700 text-xs px-2.5 py-1 rounded border">Flutter</span>
+                        <span class="bg-gray-100 text-gray-700 text-xs px-2.5 py-1 rounded border">Firebase</span>
+                    </div>
+
+                    <div class="mt-5 pt-4 border-t flex justify-between items-center">
+                        <div class="flex items-center space-x-2 text-sm text-gray-500">
+                            <i class="fa-solid fa-user-circle text-lg text-green-600"></i>
+                            <span>Posted by <strong>Priya Sharma (IT - 2nd Year)</strong></span>
+                        </div>
+                        <button onclick="applyToIdea('Peer-to-Peer Campus Marketplace')" class="bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium px-4 py-2 rounded-lg transition">
+                            Request to Join Team
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Posting Idea -->
+    <div id="postModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex justify-center items-center p-4 z-50">
+        <div class="bg-white rounded-xl max-w-lg w-full p-6 shadow-2xl relative">
+            <h3 class="text-xl font-bold text-gray-800 mb-4">Post Your Hackathon Idea</h3>
+            
+            <div class="space-y-4">
+                <div>
+                    <label class="text-xs font-semibold text-gray-600 uppercase">Project Title</label>
+                    <input id="ideaTitle" type="text" placeholder="e.g. AI Attendance System" class="w-full mt-1 p-2 border rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 outline-none">
+                </div>
+                <div>
+                    <label class="text-xs font-semibold text-gray-600 uppercase">Description</label>
+                    <textarea id="ideaDesc" rows="3" placeholder="Briefly describe what you want to build..." class="w-full mt-1 p-2 border rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 outline-none"></textarea>
+                </div>
+                <div>
+                    <label class="text-xs font-semibold text-gray-600 uppercase">Required Skills (Comma Separated)</label>
+                    <input id="ideaSkills" type="text" placeholder="e.g. Python, Figma, React" class="w-full mt-1 p-2 border rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 outline-none">
+                </div>
+            </div>
+
+            <div class="mt-6 flex justify-end space-x-3">
+                <button onclick="toggleModal()" class="px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100 rounded-lg">Cancel</button>
+                <button onclick="addNewIdea()" class="px-4 py-2 text-sm font-medium bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">Post Idea</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleModal() {
+            const modal = document.getElementById('postModal');
+            modal.classList.toggle('hidden');
+        }
+
+        function applyToIdea(projectTitle) {
+            alert('Success! Your join request has been sent to the creator of "' + projectTitle + '". They will get notified.');
+        }
+
+        function addNewIdea() {
+            const title = document.getElementById('ideaTitle').value;
+            const desc = document.getElementById('ideaDesc').value;
+            const skills = document.getElementById('ideaSkills').value;
+
+            if(!title || !desc) {
+                alert('Please fill in all details');
+                return;
+            }
+
+            const feed = document.getElementById('ideaFeed');
+            const newCardHtml = `
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="bg-purple-100 text-purple-700 text-xs font-bold px-2.5 py-1 rounded-full">New Proposal</span>
+                            <h3 class="text-xl font-bold text-gray-800 mt-2">${title}</h3>
+                        </div>
+                        <span class="text-xs text-gray-400">Just Now</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mt-2">${desc}</p>
+                    
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="text-xs font-medium text-gray-500 mr-2 flex items-center">Skills Needed:</span>
+                        ${skills.split(',').map(s => `<span class="bg-gray-100 text-gray-700 text-xs px-2.5 py-1 rounded border">${s.trim()}</span>`).join('')}
+                    </div>
+
+                    <div class="mt-5 pt-4 border-t flex justify-between items-center">
+                        <div class="flex items-center space-x-2 text-sm text-gray-500">
+                            <i class="fa-solid fa-user-circle text-lg text-purple-600"></i>
+                            <span>Posted by <strong>You (Student)</strong></span>
+                        </div>
+                        <button onclick="applyToIdea('${title}')" class="bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium px-4 py-2 rounded-lg transition">
+                            Request to Join Team
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            feed.insertAdjacentHTML('afterbegin', newCardHtml);
+            toggleModal();
+            document.getElementById('ideaTitle').value = '';
+            document.getElementById('ideaDesc').value = '';
+            document.getElementById('ideaSkills').value = '';
+        }
+    </script>
+</body>
+</html>

@@ -3,123 +3,245 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CampusConnect - Hackathon Team Builder</title>
+    <title>CampusConnect - AI Powered Collaboration</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .ai-gradient {
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+        }
+        .ai-glow {
+            box-shadow: 0 0 15px rgba(168, 85, 247, 0.25);
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); opacity: 0.8; }
+            50% { transform: scale(1.05); opacity: 1; }
+            100% { transform: scale(0.95); opacity: 0.8; }
+        }
+        .pulse-ai {
+            animation: pulse-ring 2s infinite ease-in-out;
+        }
+    </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans">
+<body class="bg-slate-50 text-slate-800 font-sans">
 
     <!-- Navbar -->
-    <nav class="bg-indigo-600 text-white shadow-lg sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="flex items-center space-x-2">
-                <i class="fa-solid fa-users-gear text-2xl"></i>
-                <span class="font-bold text-xl tracking-wide">CampusConnect</span>
-            </div>
-            <div class="text-sm bg-indigo-700 px-3 py-1 rounded-full border border-indigo-500">
-                <i class="fa-solid fa-graduation-cap mr-1"></i> My College Portal
+    <nav class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-xl ai-gradient flex items-center justify-center text-white font-bold text-xl shadow-md">
+                        CC
+                    </div>
+                    <div>
+                        <span class="text-xl font-bold bg-clip-text text-transparent ai-gradient">CampusConnect</span>
+                        <span class="text-xs bg-indigo-100 text-indigo-700 px-2.5 py-0.5 rounded-full ml-2 font-semibold">SIH #20137</span>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button onclick="openModal('ideaModal')" class="ai-gradient text-white px-4 py-2 rounded-lg font-medium hover:opacity-90 transition flex items-center space-x-2 shadow-md ai-glow">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        <span>+ Post Idea</span>
+                    </button>
+                    <div class="w-9 h-9 rounded-full bg-indigo-100 border-2 border-indigo-500 flex items-center justify-center font-bold text-indigo-700 text-sm">
+                        SV
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
 
-    <!-- Main Container -->
-    <div class="max-w-7xl mx-auto px-4 py-8 grid grid-cols-1 md:grid-cols-4 gap-6">
-        
-        <!-- Sidebar Filter -->
-        <div class="md:col-span-1 bg-white p-5 rounded-xl shadow-sm border border-gray-200 h-fit">
-            <h3 class="font-bold text-gray-700 mb-4 flex items-center">
-                <i class="fa-solid fa-filter text-indigo-600 mr-2"></i> Quick Search
-            </h3>
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
             
-            <div class="space-y-4">
-                <div>
-                    <label class="text-xs font-semibold text-gray-500 uppercase">Search Skill Needed</label>
-                    <input type="text" placeholder="e.g. Python, Flutter, Figma" class="w-full mt-1 p-2 border rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 outline-none">
+            <!-- Left Sidebar -->
+            <div class="lg:col-span-1 space-y-6">
+                <!-- AI Assistant Widget -->
+                <div class="bg-white p-5 rounded-2xl border border-indigo-100 shadow-sm relative overflow-hidden">
+                    <div class="flex items-center justify-between mb-3">
+                        <h3 class="font-bold text-slate-900 flex items-center gap-2">
+                            <i class="fa-solid fa-brain text-indigo-600 pulse-ai"></i> AI Match Engine
+                        </h3>
+                        <span class="text-[10px] bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full font-bold">Active</span>
+                    </div>
+                    <p class="text-xs text-slate-500 mb-4">Your Profile: <span class="font-semibold text-indigo-600">UI/UX, Python, Presentation</span></p>
+                    
+                    <div class="space-y-3">
+                        <label class="text-xs font-semibold text-slate-600">Smart Skill Search</label>
+                        <div class="relative">
+                            <input type="text" id="searchInput" placeholder="Search skills (e.g. Flutter, Pitching)..." class="w-full text-sm pl-9 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:border-indigo-500">
+                            <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-slate-400 text-xs"></i>
+                        </div>
+                        
+                        <button onclick="applyAIFilter()" class="w-full py-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-600 rounded-lg text-xs font-semibold transition flex items-center justify-center gap-2 border border-indigo-100">
+                            <i class="fa-solid fa-sliders"></i> Apply AI Smart Filter
+                        </button>
+                    </div>
                 </div>
-                <div>
-                    <label class="text-xs font-semibold text-gray-500 uppercase">Broad Domain</label>
-                    <select class="w-full mt-1 p-2 border rounded-lg text-sm bg-white focus:ring-2 focus:ring-indigo-500 outline-none">
-                        <option>All Domains</option>
-                        <option>Campus & Social Solutions</option>
-                        <option>Technical & Innovation</option>
-                        <option>Business & Social Impact</option>
-                    </select>
-                </div>
-                <button onclick="alert('Filters applied!')" class="w-full bg-indigo-50 text-indigo-600 font-semibold py-2 rounded-lg text-sm hover:bg-indigo-100 transition">
-                    Apply Filter
-                </button>
-            </div>
-        </div>
 
-        <!-- Main Feed -->
-        <div class="md:col-span-3 space-y-6">
-            
-            <!-- Banner & Create Post Button -->
-            <div class="bg-gradient-to-r from-indigo-500 to-purple-600 rounded-xl p-6 text-white shadow-md flex justify-between items-center">
-                <div>
-                    <h2 class="text-2xl font-bold">Have an Idea or Need a Team?</h2>
-                    <p class="text-indigo-100 text-sm mt-1">Connect with skilled peers in your college for Hackathons & Projects.</p>
+                <!-- Domains Filter -->
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+                    <h3 class="font-bold text-slate-900 mb-3 text-sm">Filter By Domain</h3>
+                    <div class="space-y-2.5 text-sm text-slate-600">
+                        <label class="flex items-center gap-2 cursor-pointer hover:text-indigo-600">
+                            <input type="checkbox" checked class="rounded text-indigo-600 focus:ring-indigo-500">
+                            <span>Technical & Innovation</span>
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer hover:text-indigo-600">
+                            <input type="checkbox" checked class="rounded text-indigo-600 focus:ring-indigo-500">
+                            <span>Campus & Social Solutions</span>
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer hover:text-indigo-600">
+                            <input type="checkbox" checked class="rounded text-indigo-600 focus:ring-indigo-500">
+                            <span>Business & Startup</span>
+                        </label>
+                    </div>
                 </div>
-                <button onclick="toggleModal()" class="bg-white text-indigo-600 font-bold px-4 py-2.5 rounded-lg shadow hover:bg-indigo-50 transition text-sm whitespace-nowrap">
-                    + Post Idea
-                </button>
             </div>
 
-            <!-- Feed Cards -->
-            <div class="space-y-4" id="ideaFeed">
+            <!-- Right Feed: Projects List -->
+            <div class="lg:col-span-3 space-y-6" id="projectsContainer">
                 
-                <!-- Card 1 -->
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
-                    <div class="flex justify-between items-start">
+                <!-- Project Card 1 (CampusConnect) -->
+                <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm hover:shadow-md transition relative">
+                    <div class="flex justify-between items-start mb-3">
                         <div>
-                            <span class="bg-emerald-100 text-emerald-700 text-xs font-bold px-2.5 py-1 rounded-full">Campus & Social Solutions</span>
-                            <h3 class="text-xl font-bold text-gray-800 mt-2">Campus Sports & Fitness Companion</h3>
+                            <span class="inline-block px-3 py-1 bg-purple-50 text-purple-700 font-semibold text-xs rounded-full mb-2">
+                                Technical & Innovation
+                            </span>
+                            <h2 class="text-xl font-bold text-slate-900">CampusConnect - AI Matchmaker Platform</h2>
                         </div>
-                        <span class="text-xs text-gray-400">Posted 1 hr ago</span>
-                    </div>
-                    <p class="text-gray-600 text-sm mt-2">An all-in-one campus app for organizing sports matches, finding gym/workout partners, and tracking hostel fitness goals.</p>
-                    
-                    <div class="mt-4 flex flex-wrap gap-2">
-                        <span class="text-xs font-medium text-gray-500 mr-2 flex items-center">Skills Needed:</span>
-                        <span class="bg-gray-100 text-gray-700 text-xs px-2.5 py-1 rounded border">Flutter</span>
-                        <span class="bg-gray-100 text-gray-700 text-xs px-2.5 py-1 rounded border">UI/UX</span>
+                        <div class="bg-emerald-50 border border-emerald-200 text-emerald-700 px-3 py-1 rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-sm">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500 pulse-ai"></span> ✨ 96% AI Match
+                        </div>
                     </div>
 
-                    <div class="mt-5 pt-4 border-t flex justify-between items-center">
-                        <div class="flex items-center space-x-2 text-sm text-gray-500">
-                            <i class="fa-solid fa-user-circle text-lg text-emerald-600"></i>
-                            <span>Posted by <strong>Rohan Verma (3rd Year)</strong></span>
+                    <p class="text-slate-600 text-sm mb-4">
+                        A smart platform connecting students across branches using AI recommendation engines for SIH hackathons and collaborative projects.
+                    </p>
+
+                    <!-- AI Project Completion Tracker -->
+                    <div class="mb-4 bg-slate-50 p-3 rounded-xl border border-slate-100">
+                        <div class="flex justify-between items-center text-xs font-semibold mb-1.5">
+                            <span class="text-slate-700 flex items-center gap-1.5">
+                                <i class="fa-solid fa-list-check text-indigo-600"></i> Project Completion (AI Tracked):
+                            </span>
+                            <span class="text-indigo-600 font-bold">65% Completed</span>
                         </div>
-                        <button onclick="applyToIdea('Campus Sports & Fitness Companion')" class="bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium px-4 py-2 rounded-lg transition">
-                            Request to Join Team
+                        <div class="w-full bg-slate-200 h-2.5 rounded-full overflow-hidden">
+                            <div class="bg-indigo-600 h-full rounded-full transition-all duration-500" style="width: 65%"></div>
+                        </div>
+                        <p class="text-[11px] text-slate-400 mt-1">Status: Frontend Prototype Ready | Pending: AI Backend & Database API</p>
+                    </div>
+
+                    <!-- Required Skills & Skill Gap -->
+                    <div class="mb-4">
+                        <span class="text-xs font-semibold text-slate-500 block mb-2">Skills Needed:</span>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-slate-100 text-slate-700 px-2.5 py-1 rounded-md text-xs font-medium">Python</span>
+                            <span class="bg-slate-100 text-slate-700 px-2.5 py-1 rounded-md text-xs font-medium">Tailwind CSS</span>
+                            <span class="bg-amber-50 text-amber-700 border border-amber-200 px-2.5 py-1 rounded-md text-xs font-semibold flex items-center gap-1">
+                                <i class="fa-solid fa-triangle-exclamation text-amber-500"></i> Pitching / PPT (Skill Gap)
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- AI Learning Recommendation Box -->
+                    <div class="mb-5 bg-gradient-to-r from-indigo-50/80 via-purple-50/80 to-slate-50 border border-indigo-100 p-4 rounded-xl shadow-sm">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                            <div class="flex gap-3">
+                                <div class="w-8 h-8 rounded-lg bg-indigo-600 text-white flex items-center justify-center shrink-0 shadow-sm">
+                                    <i class="fa-solid fa-graduation-cap"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xs font-bold text-slate-900">AI Skill-Gap Guidance:</h4>
+                                    <p class="text-xs text-slate-600 mt-0.5">
+                                        Missing <strong>Pitching & Pitch Deck</strong>? AI found a 15-minute quick guide to help you master this gap and join the team!
+                                    </p>
+                                </div>
+                            </div>
+                            <button onclick="openSkillGuide('Pitching & Presentation', 'Learn how to present hackathon ideas, structure slide decks, and deliver 3-minute winning pitches.')" class="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold px-3.5 py-2 rounded-lg whitespace-nowrap shadow-sm transition flex items-center justify-center gap-1.5">
+                                <span>Learn & Fill Gap</span> <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-between items-center pt-4 border-t border-slate-100 text-xs text-slate-500">
+                        <span>Posted by: <strong class="text-slate-700">Sakshi V.</strong> (CS Dept)</span>
+                        <button onclick="requestJoin('CampusConnect')" class="ai-gradient text-white px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition shadow-sm">
+                            Request to Join
                         </button>
                     </div>
                 </div>
 
-                <!-- Card 2 -->
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
-                    <div class="flex justify-between items-start">
+                <!-- Project Card 2 (Smart Hostel) -->
+                <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm hover:shadow-md transition">
+                    <div class="flex justify-between items-start mb-3">
                         <div>
-                            <span class="bg-indigo-100 text-indigo-700 text-xs font-bold px-2.5 py-1 rounded-full">Technical & Innovation</span>
-                            <h3 class="text-xl font-bold text-gray-800 mt-2">AI Campus Mess Food Waste Predictor</h3>
+                            <span class="inline-block px-3 py-1 bg-blue-50 text-blue-700 font-semibold text-xs rounded-full mb-2">
+                                Campus & Social Solutions
+                            </span>
+                            <h2 class="text-xl font-bold text-slate-900">Smart Hostel Management System</h2>
                         </div>
-                        <span class="text-xs text-gray-400">Posted 3 hrs ago</span>
-                    </div>
-                    <p class="text-gray-600 text-sm mt-2">An AI system to analyze student attendance in mess and accurately predict daily food requirement to prevent wastage.</p>
-                    
-                    <div class="mt-4 flex flex-wrap gap-2">
-                        <span class="text-xs font-medium text-gray-500 mr-2 flex items-center">Skills Needed:</span>
-                        <span class="bg-gray-100 text-gray-700 text-xs px-2.5 py-1 rounded border">Python</span>
-                        <span class="bg-gray-100 text-gray-700 text-xs px-2.5 py-1 rounded border">Machine Learning</span>
+                        <div class="bg-emerald-50 border border-emerald-200 text-emerald-700 px-3 py-1 rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-sm">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500 pulse-ai"></span> ✨ 88% AI Match
+                        </div>
                     </div>
 
-                    <div class="mt-5 pt-4 border-t flex justify-between items-center">
-                        <div class="flex items-center space-x-2 text-sm text-gray-500">
-                            <i class="fa-solid fa-user-circle text-lg text-indigo-600"></i>
-                            <span>Posted by <strong>Sakshi (3rd Year)</strong></span>
+                    <p class="text-slate-600 text-sm mb-4">
+                        Automating hostel gate passes, room complaints, and mess feedback through an easy mobile web portal.
+                    </p>
+
+                    <!-- AI Project Completion Tracker -->
+                    <div class="mb-4 bg-slate-50 p-3 rounded-xl border border-slate-100">
+                        <div class="flex justify-between items-center text-xs font-semibold mb-1.5">
+                            <span class="text-slate-700 flex items-center gap-1.5">
+                                <i class="fa-solid fa-list-check text-indigo-600"></i> Project Completion (AI Tracked):
+                            </span>
+                            <span class="text-indigo-600 font-bold">30% Completed</span>
                         </div>
-                        <button onclick="applyToIdea('AI Campus Mess Food Waste Predictor')" class="bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium px-4 py-2 rounded-lg transition">
-                            Request to Join Team
+                        <div class="w-full bg-slate-200 h-2.5 rounded-full overflow-hidden">
+                            <div class="bg-indigo-600 h-full rounded-full transition-all duration-500" style="width: 30%"></div>
+                        </div>
+                        <p class="text-[11px] text-slate-400 mt-1">Status: Concept & Wireframe Completed</p>
+                    </div>
+
+                    <!-- Skills & Gap -->
+                    <div class="mb-4">
+                        <span class="text-xs font-semibold text-slate-500 block mb-2">Skills Needed:</span>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-slate-100 text-slate-700 px-2.5 py-1 rounded-md text-xs font-medium">Flutter</span>
+                            <span class="bg-amber-50 text-amber-700 border border-amber-200 px-2.5 py-1 rounded-md text-xs font-semibold flex items-center gap-1">
+                                <i class="fa-solid fa-triangle-exclamation text-amber-500"></i> Firebase Auth (Missing Skill Gap)
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- AI Learning Recommendation Box -->
+                    <div class="mb-5 bg-gradient-to-r from-indigo-50/80 via-purple-50/80 to-slate-50 border border-indigo-100 p-4 rounded-xl shadow-sm">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                            <div class="flex gap-3">
+                                <div class="w-8 h-8 rounded-lg bg-indigo-600 text-white flex items-center justify-center shrink-0 shadow-sm">
+                                    <i class="fa-solid fa-graduation-cap"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xs font-bold text-slate-900">AI Skill-Gap Guidance:</h4>
+                                    <p class="text-xs text-slate-600 mt-0.5">
+                                        Need <strong>Firebase Backend</strong>? AI recommends the 20-min Firebase Auth Integration Roadmap.
+                                    </p>
+                                </div>
+                            </div>
+                            <button onclick="openSkillGuide('Firebase Auth & Database', 'Learn how to set up Firebase authentication, real-time database, and connect it with Flutter/Web apps.')" class="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold px-3.5 py-2 rounded-lg whitespace-nowrap shadow-sm transition flex items-center justify-center gap-1.5">
+                                <span>Learn & Fill Gap</span> <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-between items-center pt-4 border-t border-slate-100 text-xs text-slate-500">
+                        <span>Posted by: <strong class="text-slate-700">Aman K.</strong> (ECE Dept)</span>
+                        <button onclick="requestJoin('Smart Hostel')" class="ai-gradient text-white px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition shadow-sm">
+                            Request to Join
                         </button>
                     </div>
                 </div>
@@ -128,96 +250,178 @@
         </div>
     </div>
 
-    <!-- Modal for Posting Idea -->
-    <div id="postModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex justify-center items-center p-4 z-50">
-        <div class="bg-white rounded-xl max-w-lg w-full p-6 shadow-2xl relative">
-            <h3 class="text-xl font-bold text-gray-800 mb-4">Post Your Hackathon Idea</h3>
+    <!-- Modal 1: Post Idea -->
+    <div id="ideaModal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm hidden items-center justify-center z-50">
+        <div class="bg-white rounded-2xl p-6 w-full max-w-md mx-4 shadow-xl">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                    <i class="fa-solid fa-lightbulb text-amber-500"></i> Post New Idea
+                </h3>
+                <button onclick="closeModal('ideaModal')" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark"></i></button>
+            </div>
             
-            <div class="space-y-4">
+            <form onsubmit="handlePostIdea(event)" class="space-y-4">
                 <div>
-                    <label class="text-xs font-semibold text-gray-600 uppercase">Select Domain</label>
-                    <select id="ideaCategory" class="w-full mt-1 p-2 border rounded-lg text-sm outline-none">
-                        <option>Campus & Social Solutions</option>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Project Title</label>
+                    <input type="text" id="projectTitle" required class="w-full text-sm px-3 py-2 border border-slate-200 rounded-lg focus:outline-none focus:border-indigo-500" placeholder="e.g. Smart Campus Security">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Domain</label>
+                    <select id="projectDomain" class="w-full text-sm px-3 py-2 border border-slate-200 rounded-lg focus:outline-none focus:border-indigo-500">
                         <option>Technical & Innovation</option>
-                        <option>Business & Social Impact</option>
+                        <option>Campus & Social Solutions</option>
+                        <option>Business & Startup</option>
                     </select>
                 </div>
                 <div>
-                    <label class="text-xs font-semibold text-gray-600 uppercase">Project Title</label>
-                    <input id="ideaTitle" type="text" placeholder="Project Name" class="w-full mt-1 p-2 border rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 outline-none">
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Required Skills (Comma separated)</label>
+                    <input type="text" id="projectSkills" required class="w-full text-sm px-3 py-2 border border-slate-200 rounded-lg focus:outline-none focus:border-indigo-500" placeholder="e.g. Python, UI Design, Pitching">
                 </div>
                 <div>
-                    <label class="text-xs font-semibold text-gray-600 uppercase">Description</label>
-                    <textarea id="ideaDesc" rows="3" placeholder="Briefly describe your idea..." class="w-full mt-1 p-2 border rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 outline-none"></textarea>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Description</label>
+                    <textarea id="projectDesc" rows="3" required class="w-full text-sm px-3 py-2 border border-slate-200 rounded-lg focus:outline-none focus:border-indigo-500" placeholder="Describe your project idea..."></textarea>
                 </div>
-                <div>
-                    <label class="text-xs font-semibold text-gray-600 uppercase">Required Skills (Comma Separated)</label>
-                    <input id="ideaSkills" type="text" placeholder="e.g. Flutter, Figma, Python, Content" class="w-full mt-1 p-2 border rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 outline-none">
-                </div>
-            </div>
+                
+                <button type="submit" class="w-full py-2.5 ai-gradient text-white font-semibold rounded-lg text-sm hover:opacity-90 transition shadow-md">
+                    ✨ Publish Idea with AI Tagging
+                </button>
+            </form>
+        </div>
+    </div>
 
-            <div class="mt-6 flex justify-end space-x-3">
-                <button onclick="toggleModal()" class="px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100 rounded-lg">Cancel</button>
-                <button onclick="addNewIdea()" class="px-4 py-2 text-sm font-medium bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">Post Idea</button>
+    <!-- Modal 2: AI Skill Gap Recommendation Roadmap (INTERACTIVE) -->
+    <div id="skillModal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm hidden items-center justify-center z-50">
+        <div class="bg-white rounded-2xl p-6 w-full max-w-lg mx-4 shadow-2xl border border-indigo-100">
+            <div class="flex justify-between items-center mb-4 pb-3 border-b border-slate-100">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-9 h-9 rounded-xl ai-gradient text-white flex items-center justify-center text-sm shadow-sm">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-base font-bold text-slate-900" id="skillModalTitle">Skill Learning Roadmap</h3>
+                        <span class="text-[11px] text-indigo-600 font-semibold">AI Recommended Curated Resource</span>
+                    </div>
+                </div>
+                <button onclick="closeModal('skillModal')" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            
+            <div class="space-y-4">
+                <p class="text-xs text-slate-600 leading-relaxed" id="skillModalDesc">
+                    AI recommendation overview loading...
+                </p>
+
+                <!-- Curated Modules List -->
+                <div class="space-y-2 bg-slate-50 p-3.5 rounded-xl border border-slate-200/80">
+                    <span class="text-xs font-bold text-slate-700 block mb-1">Curated Learning Steps:</span>
+                    <div class="flex items-center gap-2.5 text-xs text-slate-700">
+                        <i class="fa-solid fa-circle-check text-emerald-500"></i>
+                        <span><strong>Step 1:</strong> Core Fundamentals (10 Mins Read/Video)</span>
+                    </div>
+                    <div class="flex items-center gap-2.5 text-xs text-slate-700">
+                        <i class="fa-solid fa-circle-check text-emerald-500"></i>
+                        <span><strong>Step 2:</strong> Hands-on Sample Template / Demo</span>
+                    </div>
+                    <div class="flex items-center gap-2.5 text-xs text-slate-700">
+                        <i class="fa-solid fa-circle-check text-emerald-500"></i>
+                        <span><strong>Step 3:</strong> Apply to Team Project & Verify Skill Gap</span>
+                    </div>
+                </div>
+
+                <div class="pt-2 flex gap-3">
+                    <a href="https://youtube.com" target="_blank" class="flex-1 text-center py-2.5 bg-red-600 hover:bg-red-700 text-white rounded-lg text-xs font-semibold transition flex items-center justify-center gap-1.5 shadow-sm">
+                        <i class="fa-brands fa-youtube"></i> Watch 15-Min Video
+                    </a>
+                    <button onclick="closeModal('skillModal'); alert('✨ Skill added to learning queue! Skill Gap marked as In-Progress.')" class="flex-1 py-2.5 ai-gradient text-white rounded-lg text-xs font-semibold transition shadow-sm">
+                        Mark Skill as Learning 🚀
+                    </button>
+                </div>
             </div>
         </div>
     </div>
 
+    <!-- JavaScript Logic -->
     <script>
-        function toggleModal() {
-            const modal = document.getElementById('postModal');
-            modal.classList.toggle('hidden');
+        function openModal(id) {
+            document.getElementById(id).classList.remove('hidden');
+            document.getElementById(id).classList.add('flex');
         }
 
-        function applyToIdea(projectTitle) {
-            alert('Success! Your join request has been sent to the creator of "' + projectTitle + '". They will get notified.');
+        function closeModal(id) {
+            document.getElementById(id).classList.add('hidden');
+            document.getElementById(id).classList.remove('flex');
         }
 
-        function addNewIdea() {
-            const title = document.getElementById('ideaTitle').value;
-            const desc = document.getElementById('ideaDesc').value;
-            const skills = document.getElementById('ideaSkills').value;
-            const category = document.getElementById('ideaCategory').value;
+        function requestJoin(projectName) {
+            alert(`✨ Request Sent! AI matched your profile with ${projectName}. The project lead will review your request.`);
+        }
 
-            if(!title || !desc) {
-                alert('Please fill in all details');
-                return;
-            }
+        function applyAIFilter() {
+            alert("✨ AI Engine Filter Active:\nProjects re-ordered based on your current skills (UI/UX, Python, Presentation)!");
+        }
 
-            const feed = document.getElementById('ideaFeed');
-            const newCardHtml = `
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
-                    <div class="flex justify-between items-start">
-                        <div>
-                            <span class="bg-purple-100 text-purple-700 text-xs font-bold px-2.5 py-1 rounded-full">${category}</span>
-                            <h3 class="text-xl font-bold text-gray-800 mt-2">${title}</h3>
-                        </div>
-                        <span class="text-xs text-gray-400">Just Now</span>
-                    </div>
-                    <p class="text-gray-600 text-sm mt-2">${desc}</p>
-                    
-                    <div class="mt-4 flex flex-wrap gap-2">
-                        <span class="text-xs font-medium text-gray-500 mr-2 flex items-center">Skills Needed:</span>
-                        ${skills.split(',').map(s => `<span class="bg-gray-100 text-gray-700 text-xs px-2.5 py-1 rounded border">${s.trim()}</span>`).join('')}
-                    </div>
+        function openSkillGuide(skillTitle, skillDescription) {
+            document.getElementById('skillModalTitle').innerText = skillTitle;
+            document.getElementById('skillModalDesc').innerText = skillDescription;
+            openModal('skillModal');
+        }
 
-                    <div class="mt-5 pt-4 border-t flex justify-between items-center">
-                        <div class="flex items-center space-x-2 text-sm text-gray-500">
-                            <i class="fa-solid fa-user-circle text-lg text-purple-600"></i>
-                            <span>Posted by <strong>You (Student)</strong></span>
-                        </div>
-                        <button onclick="applyToIdea('${title}')" class="bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium px-4 py-2 rounded-lg transition">
-                            Request to Join Team
-                        </button>
+        function handlePostIdea(e) {
+            e.preventDefault();
+            const title = document.getElementById('projectTitle').value;
+            const domain = document.getElementById('projectDomain').value;
+            const skills = document.getElementById('projectSkills').value.split(',');
+            const desc = document.getElementById('projectDesc').value;
+
+            const container = document.getElementById('projectsContainer');
+            const newCard = document.createElement('div');
+            newCard.className = "bg-white rounded-2xl border border-slate-200 p-6 shadow-sm hover:shadow-md transition";
+            
+            let skillsHTML = skills.map(s => `<span class="bg-slate-100 text-slate-700 px-2.5 py-1 rounded-md text-xs font-medium">${s.trim()}</span>`).join(' ');
+
+            newCard.innerHTML = `
+                <div class="flex justify-between items-start mb-3">
+                    <div>
+                        <span class="inline-block px-3 py-1 bg-indigo-50 text-indigo-700 font-semibold text-xs rounded-full mb-2">
+                            ${domain}
+                        </span>
+                        <h2 class="text-xl font-bold text-slate-900">${title}</h2>
                     </div>
+                    <div class="bg-emerald-50 border border-emerald-200 text-emerald-700 px-3 py-1 rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-sm">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 pulse-ai"></span> ✨ 92% AI Match
+                    </div>
+                </div>
+
+                <p class="text-slate-600 text-sm mb-4">${desc}</p>
+
+                <div class="mb-4 bg-slate-50 p-3 rounded-xl border border-slate-100">
+                    <div class="flex justify-between items-center text-xs font-semibold mb-1.5">
+                        <span class="text-slate-700 flex items-center gap-1.5">
+                            <i class="fa-solid fa-list-check text-indigo-600"></i> Project Completion (AI Tracked):
+                        </span>
+                        <span class="text-indigo-600 font-bold">10% Completed</span>
+                    </div>
+                    <div class="w-full bg-slate-200 h-2.5 rounded-full overflow-hidden">
+                        <div class="bg-indigo-600 h-full rounded-full" style="width: 10%"></div>
+                    </div>
+                    <p class="text-[11px] text-slate-400 mt-1">Status: Idea Initiated</p>
+                </div>
+
+                <div class="mb-5">
+                    <span class="text-xs font-semibold text-slate-500 block mb-2">Skills Needed:</span>
+                    <div class="flex flex-wrap gap-2">${skillsHTML}</div>
+                </div>
+
+                <div class="flex justify-between items-center pt-4 border-t border-slate-100 text-xs text-slate-500">
+                    <span>Posted by: <strong class="text-slate-700">You</strong> (Just now)</span>
+                    <button onclick="requestJoin('${title}')" class="ai-gradient text-white px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition shadow-sm">
+                        Request to Join
+                    </button>
                 </div>
             `;
 
-            feed.insertAdjacentHTML('afterbegin', newCardHtml);
-            toggleModal();
-            document.getElementById('ideaTitle').value = '';
-            document.getElementById('ideaDesc').value = '';
-            document.getElementById('ideaSkills').value = '';
+            container.prepend(newCard);
+            closeModal('ideaModal');
+            alert("✨ Idea published successfully! AI Skill Tagging and Match score generated.");
         }
     </script>
 </body>

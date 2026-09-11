@@ -1,428 +1,988 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CampusConnect - AI Powered Collaboration</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
-        .ai-gradient {
-            background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
-        }
-        .ai-glow {
-            box-shadow: 0 0 15px rgba(168, 85, 247, 0.25);
-        }
-        @keyframes pulse-ring {
-            0% { transform: scale(0.95); opacity: 0.8; }
-            50% { transform: scale(1.05); opacity: 1; }
-            100% { transform: scale(0.95); opacity: 0.8; }
-        }
-        .pulse-ai {
-            animation: pulse-ring 2s infinite ease-in-out;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CampusConnect</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f5f7ff;
+    color:#172033;
+}
+
+/* NAVBAR */
+.navbar{
+    background:linear-gradient(90deg,#4f46e5,#7c3aed);
+    color:white;
+    padding:15px 7%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.logo{
+    font-size:25px;
+    font-weight:bold;
+}
+
+.navbar button{
+    background:rgba(255,255,255,.15);
+    color:white;
+    border:1px solid rgba(255,255,255,.3);
+    padding:10px 16px;
+    border-radius:20px;
+    cursor:pointer;
+}
+
+/* HERO */
+.hero{
+    margin:30px auto;
+    max-width:1150px;
+    padding:45px;
+    border-radius:25px;
+    color:white;
+    background:linear-gradient(135deg,#4f46e5,#9333ea);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:30px;
+}
+
+.hero h1{
+    font-size:40px;
+    margin-bottom:15px;
+}
+
+.hero p{
+    font-size:18px;
+    line-height:1.6;
+    margin-bottom:25px;
+}
+
+.hero button{
+    border:none;
+    padding:13px 20px;
+    border-radius:10px;
+    font-weight:bold;
+    cursor:pointer;
+    margin-right:8px;
+}
+
+.hero .mainbtn{
+    color:#4f46e5;
+}
+
+.hero .secondbtn{
+    background:transparent;
+    color:white;
+    border:1px solid white;
+}
+
+.hero-icon{
+    font-size:100px;
+}
+
+/* CONTAINER */
+.container{
+    max-width:1150px;
+    margin:auto;
+    padding:10px 20px 50px;
+}
+
+/* STATS */
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+    margin-bottom:25px;
+}
+
+.stat{
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 5px 20px #0000000d;
+}
+
+.stat h2{
+    color:#4f46e5;
+    margin-top:7px;
+}
+
+/* SEARCH */
+.searchbox{
+    background:white;
+    padding:20px;
+    border-radius:18px;
+    margin-bottom:25px;
+    box-shadow:0 5px 20px #0000000d;
+}
+
+.searchbox input,
+.searchbox select{
+    padding:12px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    margin:7px;
+}
+
+.searchbox button{
+    padding:12px 18px;
+    background:#4f46e5;
+    color:white;
+    border:0;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+/* PROJECT */
+.project{
+    background:white;
+    padding:25px;
+    margin-bottom:18px;
+    border-radius:18px;
+    box-shadow:0 5px 20px #0000000d;
+}
+
+.badge{
+    display:inline-block;
+    background:#e0e7ff;
+    color:#4338ca;
+    padding:6px 10px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.project h2{
+    margin:12px 0;
+}
+
+.project p{
+    color:#667085;
+    line-height:1.6;
+}
+
+.skills{
+    margin:15px 0;
+}
+
+.skill{
+    display:inline-block;
+    background:#f1f3f8;
+    padding:7px 10px;
+    margin:4px;
+    border-radius:8px;
+    font-size:13px;
+}
+
+.project button,
+.primary{
+    background:#4f46e5;
+    color:white;
+    border:0;
+    padding:11px 17px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+/* SECTIONS */
+.section{
+    display:none;
+}
+
+.section.active{
+    display:block;
+}
+
+.title{
+    margin:20px 0;
+    font-size:28px;
+}
+
+/* PROFILE */
+.profile{
+    background:white;
+    padding:30px;
+    border-radius:18px;
+    box-shadow:0 5px 20px #0000000d;
+}
+
+.profile input,
+.profile textarea{
+    width:100%;
+    padding:12px;
+    margin:8px 0 15px;
+    border:1px solid #ddd;
+    border-radius:10px;
+}
+
+.profile textarea{
+    height:100px;
+}
+
+/* MATCH */
+.match-card{
+    background:white;
+    padding:20px;
+    border-radius:16px;
+    margin-bottom:15px;
+    box-shadow:0 5px 20px #0000000d;
+}
+
+.score{
+    color:#059669;
+    font-size:25px;
+    font-weight:bold;
+}
+
+.progress{
+    height:10px;
+    background:#e5e7eb;
+    border-radius:20px;
+    margin:10px 0;
+}
+
+.progress span{
+    display:block;
+    height:100%;
+    background:#4f46e5;
+    border-radius:20px;
+}
+
+/* DASHBOARD */
+.task{
+    background:white;
+    padding:15px;
+    border-radius:12px;
+    margin:10px 0;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.task input{
+    width:18px;
+    height:18px;
+}
+
+/* MODAL */
+.modal{
+    position:fixed;
+    inset:0;
+    background:#0008;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    z-index:200;
+}
+
+.modal-box{
+    background:white;
+    width:500px;
+    max-width:100%;
+    padding:25px;
+    border-radius:18px;
+}
+
+.modal-box input,
+.modal-box textarea,
+.modal-box select{
+    width:100%;
+    padding:12px;
+    margin:7px 0 15px;
+    border:1px solid #ddd;
+    border-radius:10px;
+}
+
+.modal-box textarea{
+    height:100px;
+}
+
+.close{
+    float:right;
+    border:0;
+    background:#eee;
+    padding:7px 12px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+footer{
+    text-align:center;
+    padding:30px;
+    color:#777;
+}
+
+/* MOBILE */
+@media(max-width:700px){
+
+    .hero{
+        margin:15px;
+        padding:25px;
+    }
+
+    .hero h1{
+        font-size:30px;
+    }
+
+    .hero-icon{
+        display:none;
+    }
+
+    .stats{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .navbar{
+        padding:15px;
+    }
+
+    .logo{
+        font-size:20px;
+    }
+}
+</style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans">
 
-    <!-- Navbar -->
-    <nav class="bg-white border-b border-slate-200 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
-                <div class="flex items-center space-x-3">
-                    <div class="w-10 h-10 rounded-xl ai-gradient flex items-center justify-center text-white font-bold text-xl shadow-md">
-                        CC
-                    </div>
-                    <div>
-                        <span class="text-xl font-bold bg-clip-text text-transparent ai-gradient">CampusConnect</span>
-                        <span class="text-xs bg-indigo-100 text-indigo-700 px-2.5 py-0.5 rounded-full ml-2 font-semibold">SIH #20137</span>
-                    </div>
-                </div>
-                <div class="flex items-center space-x-4">
-                    <button onclick="openModal('ideaModal')" class="ai-gradient text-white px-4 py-2 rounded-lg font-medium hover:opacity-90 transition flex items-center space-x-2 shadow-md ai-glow">
-                        <i class="fa-solid fa-wand-magic-sparkles"></i>
-                        <span>+ Post Idea</span>
-                    </button>
-                    <div class="w-9 h-9 rounded-full bg-indigo-100 border-2 border-indigo-500 flex items-center justify-center font-bold text-indigo-700 text-sm">
-                        SV
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
+<body>
 
-    <!-- Main Content -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
-            
-            <!-- Left Sidebar -->
-            <div class="lg:col-span-1 space-y-6">
-                <!-- AI Assistant Widget -->
-                <div class="bg-white p-5 rounded-2xl border border-indigo-100 shadow-sm relative overflow-hidden">
-                    <div class="flex items-center justify-between mb-3">
-                        <h3 class="font-bold text-slate-900 flex items-center gap-2">
-                            <i class="fa-solid fa-brain text-indigo-600 pulse-ai"></i> AI Match Engine
-                        </h3>
-                        <span class="text-[10px] bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full font-bold">Active</span>
-                    </div>
-                    <p class="text-xs text-slate-500 mb-4">Your Profile: <span class="font-semibold text-indigo-600">UI/UX, Python, Presentation</span></p>
-                    
-                    <div class="space-y-3">
-                        <label class="text-xs font-semibold text-slate-600">Smart Skill Search</label>
-                        <div class="relative">
-                            <input type="text" id="searchInput" placeholder="Search skills (e.g. Flutter, Pitching)..." class="w-full text-sm pl-9 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:border-indigo-500">
-                            <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-slate-400 text-xs"></i>
-                        </div>
-                        
-                        <button onclick="applyAIFilter()" class="w-full py-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-600 rounded-lg text-xs font-semibold transition flex items-center justify-center gap-2 border border-indigo-100">
-                            <i class="fa-solid fa-sliders"></i> Apply AI Smart Filter
-                        </button>
-                    </div>
-                </div>
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="logo">👥 CampusConnect</div>
 
-                <!-- Domains Filter -->
-                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
-                    <h3 class="font-bold text-slate-900 mb-3 text-sm">Filter By Domain</h3>
-                    <div class="space-y-2.5 text-sm text-slate-600">
-                        <label class="flex items-center gap-2 cursor-pointer hover:text-indigo-600">
-                            <input type="checkbox" checked class="rounded text-indigo-600 focus:ring-indigo-500">
-                            <span>Technical & Innovation</span>
-                        </label>
-                        <label class="flex items-center gap-2 cursor-pointer hover:text-indigo-600">
-                            <input type="checkbox" checked class="rounded text-indigo-600 focus:ring-indigo-500">
-                            <span>Campus & Social Solutions</span>
-                        </label>
-                        <label class="flex items-center gap-2 cursor-pointer hover:text-indigo-600">
-                            <input type="checkbox" checked class="rounded text-indigo-600 focus:ring-indigo-500">
-                            <span>Business & Startup</span>
-                        </label>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Right Feed: Projects List -->
-            <div class="lg:col-span-3 space-y-6" id="projectsContainer">
-                
-                <!-- Project Card 1 (CampusConnect) -->
-                <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm hover:shadow-md transition relative">
-                    <div class="flex justify-between items-start mb-3">
-                        <div>
-                            <span class="inline-block px-3 py-1 bg-purple-50 text-purple-700 font-semibold text-xs rounded-full mb-2">
-                                Technical & Innovation
-                            </span>
-                            <h2 class="text-xl font-bold text-slate-900">CampusConnect - AI Matchmaker Platform</h2>
-                        </div>
-                        <div class="bg-emerald-50 border border-emerald-200 text-emerald-700 px-3 py-1 rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-sm">
-                            <span class="w-2 h-2 rounded-full bg-emerald-500 pulse-ai"></span> ✨ 96% AI Match
-                        </div>
-                    </div>
-
-                    <p class="text-slate-600 text-sm mb-4">
-                        A smart platform connecting students across branches using AI recommendation engines for SIH hackathons and collaborative projects.
-                    </p>
-
-                    <!-- AI Project Completion Tracker -->
-                    <div class="mb-4 bg-slate-50 p-3 rounded-xl border border-slate-100">
-                        <div class="flex justify-between items-center text-xs font-semibold mb-1.5">
-                            <span class="text-slate-700 flex items-center gap-1.5">
-                                <i class="fa-solid fa-list-check text-indigo-600"></i> Project Completion (AI Tracked):
-                            </span>
-                            <span class="text-indigo-600 font-bold">65% Completed</span>
-                        </div>
-                        <div class="w-full bg-slate-200 h-2.5 rounded-full overflow-hidden">
-                            <div class="bg-indigo-600 h-full rounded-full transition-all duration-500" style="width: 65%"></div>
-                        </div>
-                        <p class="text-[11px] text-slate-400 mt-1">Status: Frontend Prototype Ready | Pending: AI Backend & Database API</p>
-                    </div>
-
-                    <!-- Required Skills & Skill Gap -->
-                    <div class="mb-4">
-                        <span class="text-xs font-semibold text-slate-500 block mb-2">Skills Needed:</span>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-slate-100 text-slate-700 px-2.5 py-1 rounded-md text-xs font-medium">Python</span>
-                            <span class="bg-slate-100 text-slate-700 px-2.5 py-1 rounded-md text-xs font-medium">Tailwind CSS</span>
-                            <span class="bg-amber-50 text-amber-700 border border-amber-200 px-2.5 py-1 rounded-md text-xs font-semibold flex items-center gap-1">
-                                <i class="fa-solid fa-triangle-exclamation text-amber-500"></i> Pitching / PPT (Skill Gap)
-                            </span>
-                        </div>
-                    </div>
-
-                    <!-- AI Learning Recommendation Box -->
-                    <div class="mb-5 bg-gradient-to-r from-indigo-50/80 via-purple-50/80 to-slate-50 border border-indigo-100 p-4 rounded-xl shadow-sm">
-                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                            <div class="flex gap-3">
-                                <div class="w-8 h-8 rounded-lg bg-indigo-600 text-white flex items-center justify-center shrink-0 shadow-sm">
-                                    <i class="fa-solid fa-graduation-cap"></i>
-                                </div>
-                                <div>
-                                    <h4 class="text-xs font-bold text-slate-900">AI Skill-Gap Guidance:</h4>
-                                    <p class="text-xs text-slate-600 mt-0.5">
-                                        Missing <strong>Pitching & Pitch Deck</strong>? AI found a 15-minute quick guide to help you master this gap and join the team!
-                                    </p>
-                                </div>
-                            </div>
-                            <button onclick="openSkillGuide('Pitching & Presentation', 'Learn how to present hackathon ideas, structure slide decks, and deliver 3-minute winning pitches.')" class="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold px-3.5 py-2 rounded-lg whitespace-nowrap shadow-sm transition flex items-center justify-center gap-1.5">
-                                <span>Learn & Fill Gap</span> <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="flex justify-between items-center pt-4 border-t border-slate-100 text-xs text-slate-500">
-                        <span>Posted by: <strong class="text-slate-700">Sakshi V.</strong> (CS Dept)</span>
-                        <button onclick="requestJoin('CampusConnect')" class="ai-gradient text-white px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition shadow-sm">
-                            Request to Join
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Project Card 2 (Smart Hostel) -->
-                <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm hover:shadow-md transition">
-                    <div class="flex justify-between items-start mb-3">
-                        <div>
-                            <span class="inline-block px-3 py-1 bg-blue-50 text-blue-700 font-semibold text-xs rounded-full mb-2">
-                                Campus & Social Solutions
-                            </span>
-                            <h2 class="text-xl font-bold text-slate-900">Smart Hostel Management System</h2>
-                        </div>
-                        <div class="bg-emerald-50 border border-emerald-200 text-emerald-700 px-3 py-1 rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-sm">
-                            <span class="w-2 h-2 rounded-full bg-emerald-500 pulse-ai"></span> ✨ 88% AI Match
-                        </div>
-                    </div>
-
-                    <p class="text-slate-600 text-sm mb-4">
-                        Automating hostel gate passes, room complaints, and mess feedback through an easy mobile web portal.
-                    </p>
-
-                    <!-- AI Project Completion Tracker -->
-                    <div class="mb-4 bg-slate-50 p-3 rounded-xl border border-slate-100">
-                        <div class="flex justify-between items-center text-xs font-semibold mb-1.5">
-                            <span class="text-slate-700 flex items-center gap-1.5">
-                                <i class="fa-solid fa-list-check text-indigo-600"></i> Project Completion (AI Tracked):
-                            </span>
-                            <span class="text-indigo-600 font-bold">30% Completed</span>
-                        </div>
-                        <div class="w-full bg-slate-200 h-2.5 rounded-full overflow-hidden">
-                            <div class="bg-indigo-600 h-full rounded-full transition-all duration-500" style="width: 30%"></div>
-                        </div>
-                        <p class="text-[11px] text-slate-400 mt-1">Status: Concept & Wireframe Completed</p>
-                    </div>
-
-                    <!-- Skills & Gap -->
-                    <div class="mb-4">
-                        <span class="text-xs font-semibold text-slate-500 block mb-2">Skills Needed:</span>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-slate-100 text-slate-700 px-2.5 py-1 rounded-md text-xs font-medium">Flutter</span>
-                            <span class="bg-amber-50 text-amber-700 border border-amber-200 px-2.5 py-1 rounded-md text-xs font-semibold flex items-center gap-1">
-                                <i class="fa-solid fa-triangle-exclamation text-amber-500"></i> Firebase Auth (Missing Skill Gap)
-                            </span>
-                        </div>
-                    </div>
-
-                    <!-- AI Learning Recommendation Box -->
-                    <div class="mb-5 bg-gradient-to-r from-indigo-50/80 via-purple-50/80 to-slate-50 border border-indigo-100 p-4 rounded-xl shadow-sm">
-                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                            <div class="flex gap-3">
-                                <div class="w-8 h-8 rounded-lg bg-indigo-600 text-white flex items-center justify-center shrink-0 shadow-sm">
-                                    <i class="fa-solid fa-graduation-cap"></i>
-                                </div>
-                                <div>
-                                    <h4 class="text-xs font-bold text-slate-900">AI Skill-Gap Guidance:</h4>
-                                    <p class="text-xs text-slate-600 mt-0.5">
-                                        Need <strong>Firebase Backend</strong>? AI recommends the 20-min Firebase Auth Integration Roadmap.
-                                    </p>
-                                </div>
-                            </div>
-                            <button onclick="openSkillGuide('Firebase Auth & Database', 'Learn how to set up Firebase authentication, real-time database, and connect it with Flutter/Web apps.')" class="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold px-3.5 py-2 rounded-lg whitespace-nowrap shadow-sm transition flex items-center justify-center gap-1.5">
-                                <span>Learn & Fill Gap</span> <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="flex justify-between items-center pt-4 border-t border-slate-100 text-xs text-slate-500">
-                        <span>Posted by: <strong class="text-slate-700">Aman K.</strong> (ECE Dept)</span>
-                        <button onclick="requestJoin('Smart Hostel')" class="ai-gradient text-white px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition shadow-sm">
-                            Request to Join
-                        </button>
-                    </div>
-                </div>
-
-            </div>
-        </div>
+    <div>
+        <button onclick="showSection('home')">Home</button>
+        <button onclick="showSection('matches')">AI Matching</button>
+        <button onclick="showSection('dashboard')">Dashboard</button>
+        <button onclick="showSection('profile')">My Profile</button>
     </div>
+</nav>
 
-    <!-- Modal 1: Post Idea -->
-    <div id="ideaModal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm hidden items-center justify-center z-50">
-        <div class="bg-white rounded-2xl p-6 w-full max-w-md mx-4 shadow-xl">
-            <div class="flex justify-between items-center mb-4">
-                <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
-                    <i class="fa-solid fa-lightbulb text-amber-500"></i> Post New Idea
-                </h3>
-                <button onclick="closeModal('ideaModal')" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark"></i></button>
-            </div>
-            
-            <form onsubmit="handlePostIdea(event)" class="space-y-4">
-                <div>
-                    <label class="block text-xs font-semibold text-slate-700 mb-1">Project Title</label>
-                    <input type="text" id="projectTitle" required class="w-full text-sm px-3 py-2 border border-slate-200 rounded-lg focus:outline-none focus:border-indigo-500" placeholder="e.g. Smart Campus Security">
-                </div>
-                <div>
-                    <label class="block text-xs font-semibold text-slate-700 mb-1">Domain</label>
-                    <select id="projectDomain" class="w-full text-sm px-3 py-2 border border-slate-200 rounded-lg focus:outline-none focus:border-indigo-500">
-                        <option>Technical & Innovation</option>
-                        <option>Campus & Social Solutions</option>
-                        <option>Business & Startup</option>
-                    </select>
-                </div>
-                <div>
-                    <label class="block text-xs font-semibold text-slate-700 mb-1">Required Skills (Comma separated)</label>
-                    <input type="text" id="projectSkills" required class="w-full text-sm px-3 py-2 border border-slate-200 rounded-lg focus:outline-none focus:border-indigo-500" placeholder="e.g. Python, UI Design, Pitching">
-                </div>
-                <div>
-                    <label class="block text-xs font-semibold text-slate-700 mb-1">Description</label>
-                    <textarea id="projectDesc" rows="3" required class="w-full text-sm px-3 py-2 border border-slate-200 rounded-lg focus:outline-none focus:border-indigo-500" placeholder="Describe your project idea..."></textarea>
-                </div>
-                
-                <button type="submit" class="w-full py-2.5 ai-gradient text-white font-semibold rounded-lg text-sm hover:opacity-90 transition shadow-md">
-                    ✨ Publish Idea with AI Tagging
-                </button>
-            </form>
-        </div>
-    </div>
 
-    <!-- Modal 2: AI Skill Gap Recommendation Roadmap (INTERACTIVE) -->
-    <div id="skillModal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm hidden items-center justify-center z-50">
-        <div class="bg-white rounded-2xl p-6 w-full max-w-lg mx-4 shadow-2xl border border-indigo-100">
-            <div class="flex justify-between items-center mb-4 pb-3 border-b border-slate-100">
-                <div class="flex items-center gap-2.5">
-                    <div class="w-9 h-9 rounded-xl ai-gradient text-white flex items-center justify-center text-sm shadow-sm">
-                        <i class="fa-solid fa-graduation-cap"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-base font-bold text-slate-900" id="skillModalTitle">Skill Learning Roadmap</h3>
-                        <span class="text-[11px] text-indigo-600 font-semibold">AI Recommended Curated Resource</span>
-                    </div>
-                </div>
-                <button onclick="closeModal('skillModal')" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark"></i></button>
-            </div>
-            
-            <div class="space-y-4">
-                <p class="text-xs text-slate-600 leading-relaxed" id="skillModalDesc">
-                    AI recommendation overview loading...
-                </p>
+<!-- HOME -->
+<section id="home" class="section active">
 
-                <!-- Curated Modules List -->
-                <div class="space-y-2 bg-slate-50 p-3.5 rounded-xl border border-slate-200/80">
-                    <span class="text-xs font-bold text-slate-700 block mb-1">Curated Learning Steps:</span>
-                    <div class="flex items-center gap-2.5 text-xs text-slate-700">
-                        <i class="fa-solid fa-circle-check text-emerald-500"></i>
-                        <span><strong>Step 1:</strong> Core Fundamentals (10 Mins Read/Video)</span>
-                    </div>
-                    <div class="flex items-center gap-2.5 text-xs text-slate-700">
-                        <i class="fa-solid fa-circle-check text-emerald-500"></i>
-                        <span><strong>Step 2:</strong> Hands-on Sample Template / Demo</span>
-                    </div>
-                    <div class="flex items-center gap-2.5 text-xs text-slate-700">
-                        <i class="fa-solid fa-circle-check text-emerald-500"></i>
-                        <span><strong>Step 3:</strong> Apply to Team Project & Verify Skill Gap</span>
-                    </div>
-                </div>
+<div class="hero">
 
-                <div class="pt-2 flex gap-3">
-                    <a href="https://youtube.com" target="_blank" class="flex-1 text-center py-2.5 bg-red-600 hover:bg-red-700 text-white rounded-lg text-xs font-semibold transition flex items-center justify-center gap-1.5 shadow-sm">
-                        <i class="fa-brands fa-youtube"></i> Watch 15-Min Video
-                    </a>
-                    <button onclick="closeModal('skillModal'); alert('✨ Skill added to learning queue! Skill Gap marked as In-Progress.')" class="flex-1 py-2.5 ai-gradient text-white rounded-lg text-xs font-semibold transition shadow-sm">
-                        Mark Skill as Learning 🚀
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
+<div>
+<h1>Have an Idea or Need a Team?</h1>
 
-    <!-- JavaScript Logic -->
-    <script>
-        function openModal(id) {
-            document.getElementById(id).classList.remove('hidden');
-            document.getElementById(id).classList.add('flex');
-        }
+<p>
+Connect with skilled students from your college for
+projects, hackathons and research.
+</p>
 
-        function closeModal(id) {
-            document.getElementById(id).classList.add('hidden');
-            document.getElementById(id).classList.remove('flex');
-        }
+<button class="mainbtn" onclick="openPost()">
+＋ Post Your Idea
+</button>
 
-        function requestJoin(projectName) {
-            alert(`✨ Request Sent! AI matched your profile with ${projectName}. The project lead will review your request.`);
-        }
+<button class="secondbtn" onclick="showSection('matches')">
+🤖 Find My Team
+</button>
 
-        function applyAIFilter() {
-            alert("✨ AI Engine Filter Active:\nProjects re-ordered based on your current skills (UI/UX, Python, Presentation)!");
-        }
+</div>
 
-        function openSkillGuide(skillTitle, skillDescription) {
-            document.getElementById('skillModalTitle').innerText = skillTitle;
-            document.getElementById('skillModalDesc').innerText = skillDescription;
-            openModal('skillModal');
-        }
+<div class="hero-icon">🚀</div>
 
-        function handlePostIdea(e) {
-            e.preventDefault();
-            const title = document.getElementById('projectTitle').value;
-            const domain = document.getElementById('projectDomain').value;
-            const skills = document.getElementById('projectSkills').value.split(',');
-            const desc = document.getElementById('projectDesc').value;
+</div>
 
-            const container = document.getElementById('projectsContainer');
-            const newCard = document.createElement('div');
-            newCard.className = "bg-white rounded-2xl border border-slate-200 p-6 shadow-sm hover:shadow-md transition";
-            
-            let skillsHTML = skills.map(s => `<span class="bg-slate-100 text-slate-700 px-2.5 py-1 rounded-md text-xs font-medium">${s.trim()}</span>`).join(' ');
 
-            newCard.innerHTML = `
-                <div class="flex justify-between items-start mb-3">
-                    <div>
-                        <span class="inline-block px-3 py-1 bg-indigo-50 text-indigo-700 font-semibold text-xs rounded-full mb-2">
-                            ${domain}
-                        </span>
-                        <h2 class="text-xl font-bold text-slate-900">${title}</h2>
-                    </div>
-                    <div class="bg-emerald-50 border border-emerald-200 text-emerald-700 px-3 py-1 rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-sm">
-                        <span class="w-2 h-2 rounded-full bg-emerald-500 pulse-ai"></span> ✨ 92% AI Match
-                    </div>
-                </div>
+<div class="container">
 
-                <p class="text-slate-600 text-sm mb-4">${desc}</p>
+<!-- STATS -->
 
-                <div class="mb-4 bg-slate-50 p-3 rounded-xl border border-slate-100">
-                    <div class="flex justify-between items-center text-xs font-semibold mb-1.5">
-                        <span class="text-slate-700 flex items-center gap-1.5">
-                            <i class="fa-solid fa-list-check text-indigo-600"></i> Project Completion (AI Tracked):
-                        </span>
-                        <span class="text-indigo-600 font-bold">10% Completed</span>
-                    </div>
-                    <div class="w-full bg-slate-200 h-2.5 rounded-full overflow-hidden">
-                        <div class="bg-indigo-600 h-full rounded-full" style="width: 10%"></div>
-                    </div>
-                    <p class="text-[11px] text-slate-400 mt-1">Status: Idea Initiated</p>
-                </div>
+<div class="stats">
 
-                <div class="mb-5">
-                    <span class="text-xs font-semibold text-slate-500 block mb-2">Skills Needed:</span>
-                    <div class="flex flex-wrap gap-2">${skillsHTML}</div>
-                </div>
+<div class="stat">
+👥 Students
+<h2>24</h2>
+<small>Campus members</small>
+</div>
 
-                <div class="flex justify-between items-center pt-4 border-t border-slate-100 text-xs text-slate-500">
-                    <span>Posted by: <strong class="text-slate-700">You</strong> (Just now)</span>
-                    <button onclick="requestJoin('${title}')" class="ai-gradient text-white px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition shadow-sm">
-                        Request to Join
-                    </button>
-                </div>
-            `;
+<div class="stat">
+💡 Ideas
+<h2 id="ideaCount">3</h2>
+<small>Project ideas</small>
+</div>
 
-            container.prepend(newCard);
-            closeModal('ideaModal');
-            alert("✨ Idea published successfully! AI Skill Tagging and Match score generated.");
-        }
-    </script>
+<div class="stat">
+🤝 Matches
+<h2>12</h2>
+<small>Suggested teammates</small>
+</div>
+
+<div class="stat">
+🏆 Projects
+<h2>5</h2>
+<small>Active projects</small>
+</div>
+
+</div>
+
+
+<!-- SEARCH -->
+
+<div class="searchbox">
+
+<h2>🔎 Quick Search</h2>
+
+<input
+id="search"
+placeholder="Search skill e.g. Python"
+onkeyup="searchProjects()"
+>
+
+<select id="domain" onchange="searchProjects()">
+
+<option value="">All Domains</option>
+
+<option>Technical & Innovation</option>
+
+<option>Education</option>
+
+<option>Campus & Social Solutions</option>
+
+<option>Environment</option>
+
+</select>
+
+<button onclick="searchProjects()">Search</button>
+
+</div>
+
+
+<h2 class="title">💡 Open Project Ideas</h2>
+
+<div id="projects"></div>
+
+</div>
+
+</section>
+
+
+<!-- AI MATCHING -->
+
+<section id="matches" class="section">
+
+<div class="container">
+
+<h1 class="title">🤖 Smart Team Matching</h1>
+
+<div class="project">
+
+<h2>AI Campus Mess Food Waste Predictor</h2>
+
+<p>
+Required skills for this project:
+</p>
+
+<div class="skills">
+<span class="skill">Python</span>
+<span class="skill">Machine Learning</span>
+<span class="skill">UI/UX</span>
+</div>
+
+<button class="primary" onclick="findMatches()">
+Find Suitable Teammates
+</button>
+
+</div>
+
+<div id="matchResults"></div>
+
+</div>
+
+</section>
+
+
+<!-- DASHBOARD -->
+
+<section id="dashboard" class="section">
+
+<div class="container">
+
+<h1 class="title">📊 Project Dashboard</h1>
+
+<div class="project">
+
+<h2>Campus Sports & Fitness Companion</h2>
+
+<p>Team progress</p>
+
+<div class="progress">
+<span style="width:60%"></span>
+</div>
+
+<b>60% Complete</b>
+
+</div>
+
+<h2>📋 Team Tasks</h2>
+
+<div class="task">
+<input type="checkbox">
+Create UI Design
+</div>
+
+<div class="task">
+<input type="checkbox">
+Create Student Profile
+</div>
+
+<div class="task">
+<input type="checkbox">
+Build Matching System
+</div>
+
+<div class="task">
+<input type="checkbox">
+Test Application
+</div>
+
+</div>
+
+</section>
+
+
+<!-- PROFILE -->
+
+<section id="profile" class="section">
+
+<div class="container">
+
+<h1 class="title">👤 My Student Profile</h1>
+
+<div class="profile">
+
+<h2>Sakshi</h2>
+
+<p>BCA • 5th Semester</p>
+
+<label>About Me</label>
+
+<textarea>
+BCA student interested in technology,
+projects and student collaboration.
+</textarea>
+
+<label>My Skills</label>
+
+<div class="skills">
+
+<span class="skill">Python</span>
+<span class="skill">Java</span>
+<span class="skill">HTML</span>
+<span class="skill">SQL</span>
+<span class="skill">C/C++</span>
+
+</div>
+
+<button class="primary" onclick="saveProfile()">
+Save Profile
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- POST IDEA MODAL -->
+
+<div id="postModal" class="modal">
+
+<div class="modal-box">
+
+<button class="close" onclick="closePost()">×</button>
+
+<h2>💡 Post Your Project Idea</h2>
+
+<p>Tell other students what you want to build.</p>
+
+<label>Project Title</label>
+
+<input id="newTitle"
+placeholder="Example: Smart College App">
+
+<label>Description</label>
+
+<textarea id="newDescription"
+placeholder="Explain your idea..."></textarea>
+
+<label>Domain</label>
+
+<select id="newDomain">
+
+<option>Technical & Innovation</option>
+<option>Education</option>
+<option>Campus & Social Solutions</option>
+<option>Environment</option>
+
+</select>
+
+<label>Skills Needed</label>
+
+<input id="newSkills"
+placeholder="Python, UI/UX, Java">
+
+<button class="primary" onclick="postIdea()">
+Post Idea
+</button>
+
+</div>
+
+</div>
+
+
+<footer>
+CampusConnect — Where Ideas Meet Talent 🚀
+</footer>
+
+
+<script>
+
+/* PROJECT DATA */
+
+let projects = [
+
+{
+title:"Campus Sports & Fitness Companion",
+domain:"Campus & Social Solutions",
+description:
+"An all-in-one campus app for sports matches, workout partners and hostel fitness goals.",
+skills:["Flutter","UI/UX"],
+creator:"Rohan Verma"
+},
+
+{
+title:"AI Campus Mess Food Waste Predictor",
+domain:"Technical & Innovation",
+description:
+"An AI system that predicts daily food requirements in the college mess to reduce food waste.",
+skills:["Python","Machine Learning"],
+creator:"Sakshi"
+},
+
+{
+title:"Peer Study Partner Finder",
+domain:"Education",
+description:
+"Find study partners according to subjects, interests and learning goals.",
+skills:["HTML","JavaScript","UI/UX"],
+creator:"Meera Singh"
+}
+
+];
+
+
+/* SHOW PROJECTS */
+
+function displayProjects(list = projects){
+
+let box = document.getElementById("projects");
+
+box.innerHTML = "";
+
+if(list.length === 0){
+
+box.innerHTML =
+"<div class='project'><h2>No project found 😕</h2><p>Try another skill.</p></div>";
+
+return;
+}
+
+list.forEach((p,index)=>{
+
+box.innerHTML += `
+
+<div class="project">
+
+<span class="badge">${p.domain}</span>
+
+<h2>${p.title}</h2>
+
+<p>${p.description}</p>
+
+<div class="skills">
+
+<b>Skills Needed:</b>
+
+${p.skills.map(skill =>
+`<span class="skill">${skill}</span>`
+).join("")}
+
+</div>
+
+<p>👤 Posted by <b>${p.creator}</b></p>
+
+<br>
+
+<button onclick="joinTeam('${p.title}')">
+Request to Join Team
+</button>
+
+</div>
+
+`;
+
+});
+
+}
+
+
+/* SEARCH */
+
+function searchProjects(){
+
+let search =
+document.getElementById("search").value.toLowerCase();
+
+let domain =
+document.getElementById("domain").value;
+
+let result = projects.filter(p => {
+
+let skillMatch =
+p.skills.some(skill =>
+skill.toLowerCase().includes(search)
+) ||
+p.title.toLowerCase().includes(search);
+
+let domainMatch =
+domain === "" || p.domain === domain;
+
+return skillMatch && domainMatch;
+
+});
+
+displayProjects(result);
+
+}
+
+
+/* NAVIGATION */
+
+function showSection(id){
+
+document.querySelectorAll(".section")
+.forEach(section =>
+section.classList.remove("active")
+);
+
+document.getElementById(id)
+.classList.add("active");
+
+window.scrollTo(0,0);
+
+}
+
+
+/* POST IDEA */
+
+function openPost(){
+
+document.getElementById("postModal")
+.style.display="flex";
+
+}
+
+function closePost(){
+
+document.getElementById("postModal")
+.style.display="none";
+
+}
+
+
+function postIdea(){
+
+let title =
+document.getElementById("newTitle").value;
+
+let description =
+document.getElementById("newDescription").value;
+
+let domain =
+document.getElementById("newDomain").value;
+
+let skills =
+document.getElementById("newSkills").value
+.split(",")
+.map(x=>x.trim())
+.filter(x=>x);
+
+if(!title || !description || skills.length===0){
+
+alert("Please fill all details.");
+
+return;
+
+}
+
+projects.unshift({
+
+title:title,
+description:description,
+domain:domain,
+skills:skills,
+creator:"Sakshi"
+
+});
+
+document.getElementById("ideaCount")
+.innerText=projects.length;
+
+closePost();
+
+displayProjects();
+
+alert("🎉 Your project idea has been posted!");
+
+}
+
+
+/* JOIN TEAM */
+
+function joinTeam(title){
+
+let answer =
+confirm(
+"Do you want to request to join:\n\n"
++ title
+);
+
+if(answer){
+
+alert(
+"✅ Join request sent!\n\n"
++"The project owner can review your request."
+);
+
+}
+
+}
+
+
+/* AI MATCHING */
+
+function findMatches(){
+
+let students=[
+
+{
+name:"Aarav",
+skills:["Python","Machine Learning"],
+score:95
+},
+
+{
+name:"Riya",
+skills:["UI/UX","Figma"],
+score:88
+},
+
+{
+name:"Rahul",
+skills:["Java","SQL"],
+score:62
+},
+
+{
+name:"Ananya",
+skills:["Python","AI"],
+score:91
+}
+
+];
+
+let box =
+document.getElementById("matchResults");
+
+box.innerHTML="<h2>Recommended Teammates</h2>";
+
+students.forEach(student=>{
+
+box.innerHTML += `
+
+<div class="match-card">
+
+<h2>${student.name}</h2>
+
+<p>Skills:</p>
+
+<div class="skills">
+
+${student.skills.map(skill =>
+`<span class="skill">${skill}</span>`
+).join("")}
+
+</div>
+
+<div class="score">
+${student.score}% Match
+</div>
+
+<div class="progress">
+<span style="width:${student.score}%"></span>
+</div>
+
+<button class="primary"
+onclick="invite('${student.name}')">
+
+Invite to Team
+
+</button>
+
+</div>
+
+`;
+
+});
+
+}
+
+
+function invite(name){
+
+alert(
+"🤝 Invitation sent to "
++ name
++ "!"
+);
+
+}
+
+
+/* PROFILE */
+
+function saveProfile(){
+
+alert(
+"✅ Profile saved successfully!"
+);
+
+}
+
+
+/* START */
+
+displayProjects();
+
+</script>
+
 </body>
 </html>

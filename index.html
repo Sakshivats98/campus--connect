@@ -12,428 +12,502 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial,sans-serif;
 }
 
 body{
-    background:#f5f7ff;
-    color:#172033;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f4f6ff;
+    color:#172554;
+    line-height:1.5;
+}
+
+button,
+input,
+textarea,
+select{
+    font:inherit;
 }
 
 button{
     cursor:pointer;
 }
 
+/* ================= NAVBAR ================= */
+
 .navbar{
-    background:linear-gradient(90deg,#4338ca,#7c3aed);
+    background:linear-gradient(135deg,#4338ca,#7c3aed);
     color:white;
-    padding:15px 6%;
+    padding:18px 5%;
     display:flex;
-    justify-content:space-between;
     align-items:center;
+    justify-content:space-between;
+    gap:20px;
     position:sticky;
     top:0;
-    z-index:100;
+    z-index:20;
+    box-shadow:0 4px 18px #0002;
 }
 
 .logo{
-    font-size:25px;
-    font-weight:bold;
+    font-size:30px;
+    font-weight:800;
+    white-space:nowrap;
 }
 
 .navlinks{
     display:flex;
-    gap:7px;
+    gap:10px;
     flex-wrap:wrap;
 }
 
 .navlinks button{
-    background:rgba(255,255,255,.12);
+    background:#ffffff18;
+    border:1px solid #ffffff55;
     color:white;
-    border:1px solid rgba(255,255,255,.3);
-    padding:9px 14px;
-    border-radius:20px;
+    border-radius:25px;
+    padding:10px 17px;
 }
 
-.navlinks button:hover{
+.navlinks button:hover,
+.navlinks button.active{
     background:white;
-    color:#4f46e5;
+    color:#4c1d95;
 }
 
-
-/* SECTIONS */
-
-.section{
-    display:none;
-}
-
-.section.active{
-    display:block;
-}
+/* ================= COMMON ================= */
 
 .container{
-    max-width:1150px;
+    width:min(1150px,92%);
     margin:auto;
-    padding:25px 20px 50px;
 }
 
+section{
+    padding:48px 0;
+}
 
-/* HERO */
+.hidden{
+    display:none !important;
+}
+
+.section-title{
+    font-size:34px;
+    margin-bottom:8px;
+}
+
+.muted{
+    color:#64748b;
+}
+
+.actions{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    border:0;
+    border-radius:12px;
+    padding:13px 20px;
+    font-weight:700;
+}
+
+.primary{
+    background:#5b21b6;
+    color:white;
+}
+
+.primary:hover{
+    background:#4c1d95;
+}
+
+.secondary{
+    background:white;
+    color:#5b21b6;
+    border:1px solid #c4b5fd;
+}
+
+/* ================= HERO ================= */
 
 .hero{
-    max-width:1150px;
-    margin:30px auto;
-    padding:45px;
-    border-radius:25px;
-    color:white;
-    background:linear-gradient(135deg,#4f46e5,#9333ea);
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:30px;
+    padding:75px 0;
+    background:linear-gradient(135deg,#eef2ff,#faf5ff);
 }
 
 .hero h1{
-    font-size:40px;
-    margin-bottom:15px;
+    font-size:52px;
+    max-width:760px;
+    line-height:1.1;
+    margin-bottom:18px;
 }
 
 .hero p{
-    font-size:18px;
-    line-height:1.6;
-    margin-bottom:25px;
+    font-size:20px;
+    color:#52617d;
+    max-width:760px;
+    margin-bottom:28px;
 }
 
-.hero-icon{
-    font-size:90px;
-}
-
-.mainbtn{
-    background:white;
-    color:#4f46e5;
-    border:0;
-    padding:13px 20px;
-    border-radius:10px;
-    font-weight:bold;
-    margin-right:8px;
-}
-
-.secondbtn{
-    background:transparent;
-    color:white;
-    border:1px solid white;
-    padding:13px 20px;
-    border-radius:10px;
-    font-weight:bold;
-}
-
-
-/* STATS */
+/* ================= STATS ================= */
 
 .stats{
     display:grid;
     grid-template-columns:repeat(4,1fr);
-    gap:15px;
-    margin-bottom:25px;
+    gap:16px;
+    margin-top:35px;
 }
 
 .stat{
     background:white;
-    padding:20px;
-    border-radius:16px;
-    box-shadow:0 5px 20px #0000000d;
-}
-
-.stat h2{
-    color:#4f46e5;
-    font-size:30px;
-    margin:8px 0;
-}
-
-
-/* CARDS */
-
-.card,
-.project,
-.match-card,
-.team-card,
-.profile,
-.searchbox{
-    background:white;
-    padding:22px;
     border-radius:18px;
-    box-shadow:0 5px 20px #0000000d;
+    padding:22px;
+    box-shadow:0 5px 20px #1e293b12;
 }
 
-.project,
-.match-card,
-.team-card{
-    margin-bottom:17px;
+.stat b{
+    display:block;
+    font-size:30px;
+    color:#5b21b6;
 }
 
-.title{
-    font-size:28px;
-    margin:20px 0;
-}
+/* ================= WORKFLOW ================= */
 
-.muted{
-    color:#667085;
-    line-height:1.6;
-}
-
-
-/* SEARCH */
-
-.searchbox{
-    margin-bottom:25px;
-}
-
-.search-row{
+.workflow{
     display:grid;
-    grid-template-columns:2fr 1fr auto;
-    gap:10px;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+    margin-top:25px;
 }
 
-input,
-textarea,
-select{
-    width:100%;
-    padding:12px;
-    border:1px solid #d8dce8;
-    border-radius:10px;
-    margin:7px 0 14px;
+.workflow-card,
+.card{
+    background:white;
+    border-radius:20px;
+    padding:24px;
+    box-shadow:0 5px 20px #1e293b10;
 }
 
-textarea{
-    min-height:110px;
-    resize:vertical;
+.workflow-card h3{
+    margin:12px 0 8px;
 }
 
-.primary{
-    background:#4f46e5;
-    color:white;
-    border:0;
-    padding:11px 17px;
-    border-radius:10px;
-    font-weight:bold;
+.workflow-card p{
+    color:#64748b;
+    min-height:70px;
 }
 
-.secondary{
-    background:#eef2ff;
-    color:#4338ca;
-    border:0;
-    padding:11px 17px;
-    border-radius:10px;
-    font-weight:bold;
+.icon{
+    font-size:34px;
 }
 
+/* ================= GRID ================= */
 
-/* SKILLS */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+    margin-top:25px;
+}
 
-.skills{
+.card h3{
+    margin-bottom:8px;
+}
+
+.tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
     margin:14px 0;
 }
 
-.skill{
-    display:inline-block;
-    background:#eef2ff;
-    color:#4338ca;
-    padding:7px 10px;
+.tag{
+    background:#ede9fe;
+    color:#5b21b6;
     border-radius:20px;
-    margin:4px;
+    padding:5px 10px;
     font-size:13px;
-    font-weight:bold;
 }
 
-.badge{
-    display:inline-block;
-    background:#e0e7ff;
-    color:#4338ca;
-    padding:6px 10px;
-    border-radius:20px;
-    font-size:12px;
-    font-weight:bold;
+.card-footer{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+    margin-top:18px;
 }
 
-
-/* ALERTS */
-
-.info{
-    background:#eff6ff;
-    color:#1d4ed8;
-    padding:14px;
-    border-radius:12px;
-    margin:12px 0;
+.smallbtn{
+    padding:9px 13px;
+    border:0;
+    border-radius:9px;
+    background:#5b21b6;
+    color:white;
+    font-weight:600;
 }
 
-.warning{
-    background:#fff7ed;
-    color:#c2410c;
-    padding:14px;
-    border-radius:12px;
-    margin:12px 0;
+.outline{
+    background:white;
+    color:#5b21b6;
+    border:1px solid #a78bfa;
 }
 
-.success{
-    background:#ecfdf5;
-    color:#047857;
-    padding:14px;
-    border-radius:12px;
-    margin:12px 0;
+.empty{
+    padding:45px;
+    text-align:center;
+    background:white;
+    border-radius:18px;
+    color:#64748b;
 }
 
+/* ================= PAGE HEADER ================= */
 
-/* MATCH */
-
-.match-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
+.page-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
     gap:15px;
+    flex-wrap:wrap;
 }
 
-.score{
-    color:#059669;
-    font-size:26px;
-    font-weight:bold;
+/* ================= SEARCH ================= */
+
+.searchbar{
+    display:flex;
+    gap:10px;
+    margin:20px 0;
+}
+
+.searchbar input,
+.searchbar select{
+    flex:1;
+    padding:13px;
+    border:1px solid #cbd5e1;
+    border-radius:10px;
+    background:white;
+}
+
+/* ================= MODAL ================= */
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:#0f172a99;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    z-index:50;
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-box{
+    background:white;
+    width:min(650px,100%);
+    max-height:90vh;
+    overflow:auto;
+    border-radius:20px;
+    padding:28px;
+}
+
+.modal-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:18px;
+}
+
+.close{
+    background:#f1f5f9;
+    border:0;
+    border-radius:50%;
+    width:35px;
+    height:35px;
+    font-size:20px;
+}
+
+/* ================= FORM ================= */
+
+.form-group{
+    margin:14px 0;
+}
+
+.form-group label{
+    display:block;
+    font-weight:700;
+    margin-bottom:6px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select{
+    width:100%;
+    padding:12px;
+    border:1px solid #cbd5e1;
+    border-radius:10px;
+}
+
+.form-group textarea{
+    min-height:100px;
+    resize:vertical;
+}
+
+.row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+}
+
+/* ================= NOTICE ================= */
+
+.notice{
+    background:#eef2ff;
+    border-left:4px solid #6366f1;
+    padding:14px;
+    border-radius:10px;
+    margin:15px 0;
+}
+
+/* ================= MATCH ================= */
+
+.match-card{
+    border-left:5px solid #7c3aed;
+}
+
+.match-score{
+    font-size:25px;
+    font-weight:800;
+    color:#5b21b6;
+}
+
+/* ================= SKILLS ================= */
+
+.skill-row{
+    display:flex;
+    justify-content:space-between;
+    padding:10px 0;
+    border-bottom:1px solid #e2e8f0;
 }
 
 .progress{
-    height:10px;
-    background:#e5e7eb;
-    border-radius:20px;
-    margin:10px 0;
+    height:9px;
+    background:#e2e8f0;
+    border-radius:10px;
+    overflow:hidden;
+    margin-top:5px;
 }
 
 .progress span{
     display:block;
     height:100%;
-    background:#4f46e5;
-    border-radius:20px;
+    background:#7c3aed;
 }
 
+/* ================= TEAM ================= */
 
-/* TEAM */
-
-.member{
-    background:#f8f9ff;
-    padding:12px;
-    border-radius:10px;
-    margin:8px 0;
+.team-members{
     display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-
-
-/* TASK */
-
-.task{
-    background:white;
-    padding:15px;
-    border-radius:12px;
-    margin:10px 0;
-    display:flex;
-    gap:10px;
-    align-items:center;
-}
-
-.task input{
-    width:18px;
-    height:18px;
-}
-
-
-/* MODAL */
-
-.modal{
-    position:fixed;
-    inset:0;
-    background:#0008;
-    display:none;
-    justify-content:center;
-    align-items:center;
-    padding:20px;
-    z-index:200;
-}
-
-.modal-box{
-    background:white;
-    width:600px;
-    max-width:100%;
-    max-height:90vh;
-    overflow:auto;
-    padding:25px;
-    border-radius:18px;
-}
-
-.close{
-    float:right;
-    background:#eee;
-    border:0;
-    padding:7px 12px;
-    border-radius:8px;
-}
-
-
-/* CHAT */
-
-.chat-box{
-    height:230px;
-    overflow:auto;
-    background:#f7f8fc;
-    padding:12px;
-    border-radius:12px;
+    flex-wrap:wrap;
+    gap:8px;
     margin:12px 0;
 }
 
-.message{
+.member{
+    background:#f1f5f9;
+    padding:8px 12px;
+    border-radius:20px;
+}
+
+/* ================= CHAT ================= */
+
+.chat{
+    height:280px;
+    overflow:auto;
+    background:#f8fafc;
+    padding:15px;
+    border-radius:12px;
+}
+
+.msg{
     background:white;
-    padding:10px;
+    padding:9px 12px;
     border-radius:10px;
-    margin:7px 0;
+    margin:8px 0;
+    box-shadow:0 2px 8px #0000000b;
 }
 
-.chat-input{
-    display:flex;
-    gap:8px;
+.msg.me{
+    background:#ede9fe;
 }
 
-.chat-input input{
-    margin:0;
+/* ================= ANALYSIS ================= */
+
+.analysis-box{
+    background:#f8fafc;
+    border-radius:14px;
+    padding:18px;
+    margin-top:15px;
 }
 
+.success{
+    color:#15803d;
+    font-weight:700;
+}
 
-/* MOBILE */
+.warning{
+    color:#b45309;
+    font-weight:700;
+}
 
-@media(max-width:800px){
+/* ================= FOOTER ================= */
+
+.footer{
+    text-align:center;
+    padding:30px;
+    color:#64748b;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:850px){
 
     .navbar{
         flex-direction:column;
         align-items:flex-start;
-        gap:12px;
     }
 
-    .hero{
-        margin:15px;
-        padding:28px;
-    }
-
-    .hero h1{
-        font-size:30px;
-    }
-
-    .hero-icon{
-        display:none;
-    }
-
-    .stats{
+    .stats,
+    .workflow{
         grid-template-columns:1fr 1fr;
     }
 
-    .search-row,
-    .match-grid{
+    .grid{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+@media(max-width:600px){
+
+    .hero h1{
+        font-size:38px;
+    }
+
+    .stats,
+    .workflow,
+    .grid,
+    .row{
         grid-template-columns:1fr;
     }
+
+    .navlinks{
+        width:100%;
+    }
+
+    .navlinks button{
+        flex:1;
+    }
+
 }
 
 </style>
@@ -443,90 +517,86 @@ textarea{
 <body>
 
 
-<!-- ================= NAVBAR ================= -->
+<!-- =========================================================
+                         NAVBAR
+========================================================= -->
 
-<nav class="navbar">
+<header class="navbar">
 
     <div class="logo">
         👥 CampusConnect
     </div>
 
-    <div class="navlinks">
+    <nav class="navlinks">
 
-        <button onclick="showSection('home')">
+        <button class="active"
+                onclick="showPage('home',this)">
             Home
         </button>
 
-        <button onclick="showSection('ideas')">
+        <button onclick="showPage('ideas',this)">
             💡 Ideas
         </button>
 
-        <button onclick="showSection('matches')">
+        <button onclick="showPage('matches',this)">
             🤝 Matches
         </button>
 
-        <button onclick="showSection('projects')">
+        <button onclick="showPage('projects',this)">
             🏆 Projects
         </button>
 
-        <button onclick="showSection('dashboard')">
+        <button onclick="showPage('skills',this)">
+            📚 Skills
+        </button>
+
+        <button onclick="showPage('dashboard',this)">
             📊 Dashboard
         </button>
 
-        <button onclick="showSection('profile')">
+        <button onclick="showPage('profile',this)">
             👤 Profile
         </button>
 
-    </div>
+    </nav>
 
-</nav>
+</header>
 
 
 
-<!-- ================= HOME ================= -->
+<main>
 
-<section id="home" class="section active">
 
-    <div class="hero">
+<!-- =========================================================
+                         HOME
+========================================================= -->
 
-        <div>
-
-            <h1>
-                Have an Idea or Need a Team?
-            </h1>
-
-            <p>
-                CampusConnect helps college students
-                find ideas, skills, teammates and
-                learning opportunities inside their own college.
-            </p>
-
-            <button
-                class="mainbtn"
-                onclick="openPost()">
-
-                ＋ Post Your Idea
-
-            </button>
-
-            <button
-                class="secondbtn"
-                onclick="showSection('matches')">
-
-                🤖 Find My Team
-
-            </button>
-
-        </div>
-
-        <div class="hero-icon">
-            🚀
-        </div>
-
-    </div>
-
+<section id="home" class="page hero">
 
     <div class="container">
+
+        <h1>
+            Have an Idea? Find the Right Team.
+        </h1>
+
+        <p>
+            CampusConnect connects students with the right
+            skills, ideas and interests to build projects together.
+        </p>
+
+        <div class="actions">
+
+            <button class="btn primary"
+                    onclick="openPostModal()">
+                💡 Post Your Idea
+            </button>
+
+            <button class="btn secondary"
+                    onclick="showPage('matches')">
+                🤝 Find My Team
+            </button>
+
+        </div>
 
 
         <!-- STATS -->
@@ -534,171 +604,26 @@ textarea{
         <div class="stats">
 
             <div class="stat">
-
-                👥 Students
-
-                <h2 id="studentCount">
-                    0
-                </h2>
-
-                <small>
-                    College members
-                </small>
-
+                <b id="studentStat">0</b>
+                Students
             </div>
 
-
             <div class="stat">
-
-                💡 Ideas
-
-                <h2 id="ideaCount">
-                    0
-                </h2>
-
-                <small>
-                    Posted ideas
-                </small>
-
+                <b id="ideaStat">0</b>
+                Ideas
             </div>
 
-
             <div class="stat">
-
-                🤝 Matches
-
-                <h2 id="matchCount">
-                    0
-                </h2>
-
-                <small>
-                    AI skill matches
-                </small>
-
+                <b id="matchStat">0</b>
+                AI Matches
             </div>
 
-
             <div class="stat">
-
-                🏆 Projects
-
-                <h2 id="projectCount">
-                    0
-                </h2>
-
-                <small>
-                    Active projects
-                </small>
-
+                <b id="projectStat">0</b>
+                Active Projects
             </div>
 
         </div>
-
-
-
-        <div class="info">
-
-            🔒 <b>College-only platform:</b>
-
-            CampusConnect is designed for students
-            of the same college.
-
-            Team discussions are private and visible
-            only to accepted team members.
-
-        </div>
-
-
-
-        <h2 class="title">
-            How CampusConnect Works
-        </h2>
-
-
-        <div class="match-grid">
-
-
-            <div class="card">
-
-                <h3>
-                    💡 1. Post an Idea
-                </h3>
-
-                <br>
-
-                <p class="muted">
-
-                    Student idea, team size and
-                    required skills post karega.
-
-                </p>
-
-            </div>
-
-
-
-            <div class="card">
-
-                <h3>
-                    🤖 2. AI Analyses
-                </h3>
-
-                <br>
-
-                <p class="muted">
-
-                    AI skills, skill gaps,
-                    similar ideas and possible
-                    SIH relevance check karega.
-
-                </p>
-
-            </div>
-
-
-
-            <div class="card">
-
-                <h3>
-                    📚 3. Learn & Improve
-                </h3>
-
-                <br>
-
-                <p class="muted">
-
-                    Skill gap hone par AI learning
-                    suggestions dega.
-
-                    Student automatically reject nahi hoga.
-
-                </p>
-
-            </div>
-
-
-
-            <div class="card">
-
-                <h3>
-                    🔐 4. Build Together
-                </h3>
-
-                <br>
-
-                <p class="muted">
-
-                    Team accept hone ke baad
-                    private team discussion aur
-                    project work kar sakti hai.
-
-                </p>
-
-            </div>
-
-
-        </div>
-
 
     </div>
 
@@ -706,60 +631,878 @@ textarea{
 
 
 
-<!-- ================= IDEAS ================= -->
+<!-- =========================================================
+                   HOW CAMPUSCONNECT WORKS
+========================================================= -->
 
-<section id="ideas" class="section">
+<section id="workflow" class="page">
 
-<div class="container">
+    <div class="container">
 
-    <h1 class="title">
-        💡 Project Ideas
-    </h1>
+        <h2 class="section-title">
+            How CampusConnect Works
+        </h2>
+
+        <p class="muted">
+            Everything you need to turn an idea into a team.
+        </p>
 
 
-    <div class="searchbox">
+        <div class="workflow">
 
-        <div class="search-row">
+
+            <!-- POST IDEA -->
+
+            <div class="workflow-card">
+
+                <div class="icon">
+                    💡
+                </div>
+
+                <h3>
+                    Post an Idea
+                </h3>
+
+                <p>
+                    Share your project idea, team size
+                    and required skills.
+                </p>
+
+                <button class="smallbtn"
+                        onclick="openPostModal()">
+                    Post Idea →
+                </button>
+
+            </div>
+
+
+            <!-- MATCHING -->
+
+            <div class="workflow-card">
+
+                <div class="icon">
+                    🤖
+                </div>
+
+                <h3>
+                    AI Matching
+                </h3>
+
+                <p>
+                    Find students whose skills and
+                    interests match your project.
+                </p>
+
+                <button class="smallbtn"
+                        onclick="showPage('matches')">
+                    Find Matches →
+                </button>
+
+            </div>
+
+
+            <!-- SKILLS -->
+
+            <div class="workflow-card">
+
+                <div class="icon">
+                    📚
+                </div>
+
+                <h3>
+                    Learn & Improve
+                </h3>
+
+                <p>
+                    Identify skill gaps and get
+                    learning suggestions.
+                </p>
+
+                <button class="smallbtn"
+                        onclick="showPage('skills')">
+                    Explore Skills →
+                </button>
+
+            </div>
+
+
+            <!-- TEAM -->
+
+            <div class="workflow-card">
+
+                <div class="icon">
+                    🔐
+                </div>
+
+                <h3>
+                    Build Together
+                </h3>
+
+                <p>
+                    Work and discuss privately with
+                    your accepted team.
+                </p>
+
+                <button class="smallbtn"
+                        onclick="showPage('projects')">
+                    My Team →
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+                         IDEAS
+========================================================= -->
+
+<section id="ideas" class="page hidden">
+
+    <div class="container">
+
+        <div class="page-head">
+
+            <div>
+
+                <h2 class="section-title">
+                    💡 Project Ideas
+                </h2>
+
+                <p class="muted">
+                    Explore ideas posted by students.
+                </p>
+
+            </div>
+
+            <button class="btn primary"
+                    onclick="openPostModal()">
+                + Post New Idea
+            </button>
+
+        </div>
+
+
+        <div class="searchbar">
 
             <input
                 id="ideaSearch"
-                placeholder="Search idea or skill..."
+                placeholder="Search ideas or skills..."
                 oninput="renderIdeas()"
             >
-
 
             <select
                 id="ideaDomain"
                 onchange="renderIdeas()">
 
-                <option value="">
+                <option value="all">
                     All Domains
                 </option>
 
                 <option>
-                    Technical & Innovation
+                    AI / ML
+                </option>
+
+                <option>
+                    Web Development
+                </option>
+
+                <option>
+                    App Development
+                </option>
+
+                <option>
+                    UI/UX
                 </option>
 
                 <option>
                     Education
                 </option>
 
-                <option>
-                    Campus & Social Solutions
-                </option>
-
-                <option>
-                    Environment
-                </option>
-
             </select>
+
+        </div>
+
+
+        <div id="ideasGrid" class="grid"></div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+                         MATCHES
+========================================================= -->
+
+<section id="matches" class="page hidden">
+
+    <div class="container">
+
+        <div class="page-head">
+
+            <div>
+
+                <h2 class="section-title">
+                    🤝 AI Team Matches
+                </h2>
+
+                <p class="muted">
+                    Find students based on skills and interests.
+                </p>
+
+            </div>
+
+            <button class="btn primary"
+                    onclick="runMatching()">
+                ✨ Run AI Matching
+            </button>
+
+        </div>
+
+
+        <div
+            id="matchProjectBox"
+            class="card"
+            style="margin-top:20px">
+        </div>
+
+
+        <div
+            id="matchesGrid"
+            class="grid">
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+                         PROJECTS
+========================================================= -->
+
+<section id="projects" class="page hidden">
+
+    <div class="container">
+
+        <div class="page-head">
+
+            <div>
+
+                <h2 class="section-title">
+                    🏆 Active Projects
+                </h2>
+
+                <p class="muted">
+                    Projects where teams are forming or working.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div id="projectsGrid"
+             class="grid">
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+                         SKILLS
+========================================================= -->
+
+<section id="skills" class="page hidden">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            📚 Skills & Learning
+        </h2>
+
+        <p class="muted">
+            Improve the skills needed for projects you are
+            interested in.
+        </p>
+
+
+        <div class="grid">
+
+
+            <div class="card">
+
+                <h3>
+                    🐍 Python
+                </h3>
+
+                <p class="muted">
+                    Programming, automation and AI basics.
+                </p>
+
+                <button class="smallbtn"
+                        onclick="learning('Python')">
+                    View Learning Path
+                </button>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    🤖 Machine Learning
+                </h3>
+
+                <p class="muted">
+                    Build intelligent features for projects.
+                </p>
+
+                <button class="smallbtn"
+                        onclick="learning('Machine Learning')">
+                    View Learning Path
+                </button>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    🎨 UI/UX
+                </h3>
+
+                <p class="muted">
+                    Create simple and user-friendly interfaces.
+                </p>
+
+                <button class="smallbtn"
+                        onclick="learning('UI/UX')">
+                    View Learning Path
+                </button>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    🌐 Web Development
+                </h3>
+
+                <p class="muted">
+                    HTML, CSS and JavaScript for web projects.
+                </p>
+
+                <button class="smallbtn"
+                        onclick="learning('Web Development')">
+                    View Learning Path
+                </button>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    📱 App Development
+                </h3>
+
+                <p class="muted">
+                    Build mobile applications and prototypes.
+                </p>
+
+                <button class="smallbtn"
+                        onclick="learning('App Development')">
+                    View Learning Path
+                </button>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    🗄️ Database
+                </h3>
+
+                <p class="muted">
+                    Store and manage project information.
+                </p>
+
+                <button class="smallbtn"
+                        onclick="learning('Database')">
+                    View Learning Path
+                </button>
+
+            </div>
+
+
+        </div>
+
+
+        <div
+            id="skillGapBox"
+            class="card"
+            style="margin-top:22px">
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+                         DASHBOARD
+========================================================= -->
+
+<section id="dashboard" class="page hidden">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            📊 My Dashboard
+        </h2>
+
+        <p class="muted">
+            Manage your profile, requests and team workspace.
+        </p>
+
+
+        <div id="dashboardBox"
+             style="margin-top:22px">
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+                         PROFILE
+========================================================= -->
+
+<section id="profile" class="page hidden">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            👤 My Profile
+        </h2>
+
+        <p class="muted">
+            Create your profile so CampusConnect can
+            find relevant matches.
+        </p>
+
+
+        <div
+            class="card"
+            style="margin-top:22px;max-width:700px">
+
+
+            <div class="form-group">
+
+                <label>
+                    Full Name
+                </label>
+
+                <input
+                    id="profileName"
+                    placeholder="Enter your name">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Course / Branch
+                </label>
+
+                <input
+                    id="profileCourse"
+                    placeholder="Example: BCA">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Skills
+                </label>
+
+                <input
+                    id="profileSkills"
+                    placeholder="Python, Java, SQL, UI/UX">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Interests
+                </label>
+
+                <input
+                    id="profileInterests"
+                    placeholder="AI, Web Development, Education">
+
+            </div>
 
 
             <button
-                class="primary"
-                onclick="openPost()">
+                class="btn primary"
+                onclick="saveProfile()">
 
-                ＋ Post Idea
+                Save Profile
+
+            </button>
+
+
+            <div
+                id="profileStatus"
+                class="notice hidden">
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+
+<!-- =========================================================
+                      POST IDEA MODAL
+========================================================= -->
+
+<div id="postModal"
+     class="modal">
+
+    <div class="modal-box">
+
+
+        <div class="modal-head">
+
+            <h2>
+                💡 Post Your Idea
+            </h2>
+
+            <button
+                class="close"
+                onclick="closeModal('postModal')">
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Idea / Project Title
+            </label>
+
+            <input
+                id="ideaTitle"
+                placeholder="Example: Smart Campus Waste Management">
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Description
+            </label>
+
+            <textarea
+                id="ideaDescription"
+                placeholder="Describe your project idea...">
+            </textarea>
+
+        </div>
+
+
+        <div class="row">
+
+
+            <div class="form-group">
+
+                <label>
+                    Domain
+                </label>
+
+                <select id="ideaDomainForm">
+
+                    <option>
+                        AI / ML
+                    </option>
+
+                    <option>
+                        Web Development
+                    </option>
+
+                    <option>
+                        App Development
+                    </option>
+
+                    <option>
+                        UI/UX
+                    </option>
+
+                    <option>
+                        Education
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Team Size
+                </label>
+
+                <input
+                    id="teamSize"
+                    type="number"
+                    min="1"
+                    max="6"
+                    value="6">
+
+            </div>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Required Skills
+            </label>
+
+            <input
+                id="requiredSkills"
+                placeholder="Python, Machine Learning, UI/UX">
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Members Needed Per Skill
+            </label>
+
+            <input
+                id="skillMembers"
+                placeholder="Python: 2, UI/UX: 1, Research: 1">
+
+        </div>
+
+
+        <div class="notice">
+
+            🤖 AI will analyze skill requirements,
+            possible SIH relevance and similar ideas.
+
+            <br><br>
+
+            A student with a skill gap will
+            <b>not</b> be automatically rejected.
+
+        </div>
+
+
+        <button
+            class="btn primary"
+            onclick="postIdea()">
+
+            Analyze & Post Idea
+
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================================
+                      IDEA DETAILS MODAL
+========================================================= -->
+
+<div id="ideaModal"
+     class="modal">
+
+    <div class="modal-box">
+
+        <div class="modal-head">
+
+            <h2 id="ideaModalTitle">
+                Idea
+            </h2>
+
+            <button
+                class="close"
+                onclick="closeModal('ideaModal')">
+                ×
+            </button>
+
+        </div>
+
+
+        <div id="ideaDetails"></div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================================
+                      JOIN MODAL
+========================================================= -->
+
+<div id="joinModal"
+     class="modal">
+
+    <div class="modal-box">
+
+        <div class="modal-head">
+
+            <h2>
+                🤝 Request to Join
+            </h2>
+
+            <button
+                class="close"
+                onclick="closeModal('joinModal')">
+                ×
+            </button>
+
+        </div>
+
+
+        <p
+            id="joinProjectName"
+            class="muted">
+        </p>
+
+
+        <div class="form-group">
+
+            <label>
+                Why do you want to join this project?
+            </label>
+
+            <textarea
+                id="joinReason"
+                placeholder="Tell the project owner why you are interested...">
+            </textarea>
+
+        </div>
+
+
+        <div
+            id="joinMatchInfo"
+            class="analysis-box">
+        </div>
+
+
+        <button
+            class="btn primary"
+            onclick="sendJoinRequest()">
+
+            Send Join Request
+
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================================
+                      TEAM MODAL
+========================================================= -->
+
+<div id="teamModal"
+     class="modal">
+
+    <div class="modal-box">
+
+        <div class="modal-head">
+
+            <h2>
+                🔐 Private Team Workspace
+            </h2>
+
+            <button
+                class="close"
+                onclick="closeModal('teamModal')">
+                ×
+            </button>
+
+        </div>
+
+
+        <div id="teamInfo"></div>
+
+
+        <div class="notice">
+
+            🔒 Only accepted team members can access
+            this team discussion.
+
+        </div>
+
+
+        <div
+            id="chatBox"
+            class="chat">
+        </div>
+
+
+        <div
+            class="actions"
+            style="margin-top:10px">
+
+
+            <input
+                id="chatInput"
+                style="flex:1;padding:11px;border:1px solid #cbd5e1;border-radius:10px"
+                placeholder="Write a team message...">
+
+
+            <button
+                class="smallbtn"
+                onclick="sendMessage()">
+
+                Send
 
             </button>
 
@@ -767,377 +1510,17 @@ textarea{
 
     </div>
 
-
-    <div id="ideasList"></div>
-
-</div>
-
-</section>
-
-
-
-<!-- ================= MATCHES ================= -->
-
-<section id="matches" class="section">
-
-<div class="container">
-
-    <h1 class="title">
-        🤖 AI Skill Matching
-    </h1>
-
-
-    <div class="info">
-
-        AI ka purpose student ko reject karna nahi hai.
-
-        AI current skills, required skills,
-        interest aur skill gap analyse karega.
-
-        <br><br>
-
-        <b>
-            Skill gap hone ke baad bhi student
-            team ko request bhej sakta hai.
-        </b>
-
-    </div>
-
-
-    <div class="searchbox">
-
-        <h3>
-            Select Project
-        </h3>
-
-        <select
-            id="matchProject"
-            onchange="runMatching()">
-        </select>
-
-
-        <button
-            class="primary"
-            onclick="runMatching()">
-
-            🤖 Find Suitable Students
-
-        </button>
-
-    </div>
-
-
-    <div id="matchResults"></div>
-
-</div>
-
-</section>
-
-
-
-<!-- ================= PROJECTS ================= -->
-
-<section id="projects" class="section">
-
-<div class="container">
-
-    <h1 class="title">
-        🏆 Active Projects & Teams
-    </h1>
-
-    <p class="muted">
-
-        Yahan formed/active teams dikhenge.
-
-        Interested students team ko
-        join request bhej sakte hain.
-
-    </p>
-
-    <br>
-
-    <div id="projectsList"></div>
-
-</div>
-
-</section>
-
-
-
-<!-- ================= DASHBOARD ================= -->
-
-<section id="dashboard" class="section">
-
-<div class="container">
-
-    <h1 class="title">
-        📊 My Dashboard
-    </h1>
-
-    <div id="dashboardContent"></div>
-
-</div>
-
-</section>
-
-
-
-<!-- ================= PROFILE ================= -->
-
-<section id="profile" class="section">
-
-<div class="container">
-
-    <h1 class="title">
-        👤 My Student Profile
-    </h1>
-
-
-    <div class="profile">
-
-        <label>
-            Name
-        </label>
-
-        <input
-            id="profileName"
-            placeholder="Your name"
-        >
-
-
-        <label>
-            Course / Semester
-        </label>
-
-        <input
-            id="profileCourse"
-            value="BCA • 5th Semester"
-        >
-
-
-        <label>
-            Skills
-        </label>
-
-        <input
-            id="profileSkills"
-            placeholder="Python, Java, HTML, SQL"
-        >
-
-
-        <label>
-            Skill Levels
-        </label>
-
-        <input
-            id="profileLevels"
-            placeholder="Python-Beginner, Java-Intermediate"
-        >
-
-
-        <label>
-            Interested In
-        </label>
-
-        <input
-            id="profileInterest"
-            placeholder="AI, Web Development, UI/UX"
-        >
-
-
-        <label>
-            About Me
-        </label>
-
-        <textarea
-            id="profileAbout"
-            placeholder="Tell other students about yourself..."
-        ></textarea>
-
-
-        <button
-            class="primary"
-            onclick="saveProfile()">
-
-            Save Profile
-
-        </button>
-
-
-        <div id="profileMessage"></div>
-
-    </div>
-
-</div>
-
-</section>
-
-
-
-<!-- ================= POST IDEA MODAL ================= -->
-
-<div
-    id="postModal"
-    class="modal">
-
-
-<div class="modal-box">
-
-    <button
-        class="close"
-        onclick="closePost()">
-
-        ×
-
-    </button>
-
-
-    <h2>
-        💡 Post Your Project Idea
-    </h2>
-
-    <br>
-
-    <p class="muted">
-
-        AI idea ko analyse karega.
-
-        Similar idea milne par reject nahi karega,
-        balki improvement suggestions dega.
-
-    </p>
-
-
-    <br>
-
-
-    <label>
-        Project / Idea Title
-    </label>
-
-    <input
-        id="newTitle"
-        placeholder="Example: Smart College App"
-    >
-
-
-    <label>
-        Description
-    </label>
-
-    <textarea
-        id="newDescription"
-        placeholder="Explain your idea..."
-    ></textarea>
-
-
-    <label>
-        Domain
-    </label>
-
-    <select id="newDomain">
-
-        <option>
-            Technical & Innovation
-        </option>
-
-        <option>
-            Education
-        </option>
-
-        <option>
-            Campus & Social Solutions
-        </option>
-
-        <option>
-            Environment
-        </option>
-
-    </select>
-
-
-    <label>
-        Team Size Required
-    </label>
-
-    <input
-        id="newTeamSize"
-        type="number"
-        min="1"
-        max="6"
-        value="6"
-    >
-
-
-    <label>
-        Skills Needed
-    </label>
-
-    <input
-        id="newSkills"
-        placeholder="Python, Machine Learning, UI/UX"
-    >
-
-
-    <label>
-        Skill-wise Members Needed
-    </label>
-
-    <input
-        id="newSkillCounts"
-        placeholder="Python:2, ML:1, UI/UX:1"
-    >
-
-
-    <button
-        class="primary"
-        onclick="postIdea()">
-
-        Post Idea & Analyse with AI
-
-    </button>
-
-
-</div>
-
 </div>
 
 
 
-<!-- ================= TEAM MODAL ================= -->
+<!-- =========================================================
+                         FOOTER
+========================================================= -->
 
-<div
-    id="teamModal"
-    class="modal">
+<footer class="footer">
 
-
-<div class="modal-box">
-
-    <button
-        class="close"
-        onclick="closeTeam()">
-
-        ×
-
-    </button>
-
-
-    <div id="teamContent"></div>
-
-</div>
-
-</div>
-
-
-
-<footer style="
-text-align:center;
-padding:30px;
-color:#777;
-">
-
-CampusConnect —
-Where Ideas Meet Talent 🚀
+    CampusConnect — Where Ideas Meet Talent.
 
 </footer>
 
@@ -1145,351 +1528,599 @@ Where Ideas Meet Talent 🚀
 
 <script>
 
-
-/* =====================================================
-   DEFAULT PROJECTS
-===================================================== */
+/* =========================================================
+                    SAMPLE PROJECTS
+========================================================= */
 
 const defaultProjects = [
 
-{
+    {
+        id:1,
 
-id:1,
+        title:"Campus Sports & Fitness Companion",
 
-title:
-"Campus Sports & Fitness Companion",
+        description:
+        "A platform to help students discover campus sports activities and fitness partners.",
 
-domain:
-"Campus & Social Solutions",
+        domain:"App Development",
 
-description:
-"An all-in-one campus app for sports matches, workout partners and hostel fitness goals.",
+        skills:[
+            "Flutter",
+            "UI/UX"
+        ],
 
-skills:
-["Flutter","UI/UX"],
+        teamSize:6,
 
-teamSize:6,
+        members:2,
 
-creator:
-"Rohan Verma",
+        owner:"Student Team",
 
-members:
-["Rohan Verma","Aman"],
-
-active:true
-
-},
+        active:true
+    },
 
 
-{
+    {
+        id:2,
 
-id:2,
+        title:"AI Campus Mess Food Waste Predictor",
 
-title:
-"AI Campus Mess Food Waste Predictor",
+        description:
+        "Predict food waste in campus messes using data and machine learning.",
 
-domain:
-"Technical & Innovation",
+        domain:"AI / ML",
 
-description:
-"An AI system that predicts daily food requirements in the college mess to reduce food waste.",
+        skills:[
+            "Python",
+            "Machine Learning"
+        ],
 
-skills:
-["Python","Machine Learning","Database"],
+        teamSize:6,
 
-teamSize:6,
+        members:3,
 
-creator:
-"Sakshi",
+        owner:"Student Team",
 
-members:
-["Sakshi","Aarav","Ananya"],
-
-active:true
-
-},
+        active:true
+    },
 
 
-{
+    {
+        id:3,
 
-id:3,
+        title:"Peer Study Partner Finder",
 
-title:
-"Peer Study Partner Finder",
+        description:
+        "Connect students with peers based on subjects, interests and study goals.",
 
-domain:
-"Education",
+        domain:"Web Development",
 
-description:
-"Find study partners according to subjects, interests and learning goals.",
+        skills:[
+            "HTML",
+            "JavaScript",
+            "UI/UX"
+        ],
 
-skills:
-["HTML","JavaScript","UI/UX"],
+        teamSize:6,
 
-teamSize:6,
+        members:4,
 
-creator:
-"Meera Singh",
+        owner:"Student Team",
 
-members:
-["Meera Singh"],
-
-active:true
-
-}
+        active:true
+    }
 
 ];
 
 
+/* =========================================================
+                    SAMPLE STUDENTS
+========================================================= */
 
-/* =====================================================
-   LOCAL STORAGE
-===================================================== */
+const students = [
+
+    {
+        name:"Rahul",
+
+        skills:[
+            "Flutter",
+            "UI/UX"
+        ],
+
+        interest:"App Development"
+    },
+
+
+    {
+        name:"Priya",
+
+        skills:[
+            "Python",
+            "Machine Learning"
+        ],
+
+        interest:"AI / ML"
+    },
+
+
+    {
+        name:"Ankit",
+
+        skills:[
+            "HTML",
+            "JavaScript"
+        ],
+
+        interest:"Web Development"
+    },
+
+
+    {
+        name:"Neha",
+
+        skills:[
+            "UI/UX",
+            "Figma",
+            "Research"
+        ],
+
+        interest:"Design"
+    },
+
+
+    {
+        name:"Aman",
+
+        skills:[
+            "Python",
+            "SQL",
+            "Java"
+        ],
+
+        interest:"AI / Web"
+    }
+
+];
+
+
+/* =========================================================
+                    LOCAL STORAGE
+========================================================= */
 
 let projects =
-JSON.parse(
-localStorage.getItem("campusProjects")
-) || defaultProjects;
+    JSON.parse(
+        localStorage.getItem("cc_projects")
+    ) || defaultProjects;
 
 
 let profile =
-JSON.parse(
-localStorage.getItem("campusProfile")
-) || {
+    JSON.parse(
+        localStorage.getItem("cc_profile")
+    ) || {
 
-    name:"",
-    course:"BCA • 5th Semester",
-    skills:[],
-    levels:{},
-    interest:"",
-    about:""
+        name:"",
+        course:"",
+        skills:[],
+        interests:[]
 
-};
-
-
-let registered =
-JSON.parse(
-localStorage.getItem("campusRegistered")
-) || false;
+    };
 
 
 let matchCount =
-Number(
-localStorage.getItem("campusMatches")
-) || 0;
+    Number(
+        localStorage.getItem("cc_matches")
+    ) || 0;
 
 
 let joinRequests =
-JSON.parse(
-localStorage.getItem("campusRequests")
-) || [];
+    JSON.parse(
+        localStorage.getItem("cc_requests")
+    ) || [];
 
 
 let messages =
-JSON.parse(
-localStorage.getItem("campusMessages")
-) || {};
+    JSON.parse(
+        localStorage.getItem("cc_messages")
+    ) || [];
 
 
+let selectedProjectId = null;
 
-/* =====================================================
-   SAVE DATA
-===================================================== */
+let selectedStudent = null;
 
-function saveData(){
+
+/* =========================================================
+                         SAVE
+========================================================= */
+
+function saveAll(){
 
     localStorage.setItem(
-        "campusProjects",
+        "cc_projects",
         JSON.stringify(projects)
     );
 
+
     localStorage.setItem(
-        "campusProfile",
+        "cc_profile",
         JSON.stringify(profile)
     );
 
-    localStorage.setItem(
-        "campusRegistered",
-        JSON.stringify(registered)
-    );
 
     localStorage.setItem(
-        "campusMatches",
+        "cc_matches",
         matchCount
     );
 
+
     localStorage.setItem(
-        "campusRequests",
+        "cc_requests",
         JSON.stringify(joinRequests)
     );
 
+
     localStorage.setItem(
-        "campusMessages",
+        "cc_messages",
         JSON.stringify(messages)
     );
 
 }
 
 
-
-/* =====================================================
-   DYNAMIC STATS
-===================================================== */
+/* =========================================================
+                       STATISTICS
+========================================================= */
 
 function updateStats(){
 
     document.getElementById(
-        "studentCount"
-    ).innerText =
-    registered ? 1 : 0;
+        "studentStat"
+    ).textContent =
+        profile.name ? 1 : 0;
 
 
     document.getElementById(
-        "ideaCount"
-    ).innerText =
-    projects.length;
+        "ideaStat"
+    ).textContent =
+        projects.length;
 
 
     document.getElementById(
-        "matchCount"
-    ).innerText =
-    matchCount;
+        "matchStat"
+    ).textContent =
+        matchCount;
 
 
     document.getElementById(
-        "projectCount"
-    ).innerText =
-    projects.filter(
-        p => p.active
-    ).length;
+        "projectStat"
+    ).textContent =
+        projects.filter(
+            p => p.active
+        ).length;
 
 }
 
 
+/* =========================================================
+                     PAGE NAVIGATION
+========================================================= */
 
-/* =====================================================
-   NAVIGATION
-===================================================== */
-
-function showSection(id){
-
-    document
-    .querySelectorAll(".section")
-    .forEach(
-        section =>
-        section.classList.remove("active")
-    );
-
+function showPage(id,button){
 
     document
-    .getElementById(id)
-    .classList.add("active");
+        .querySelectorAll(".page")
+        .forEach(
+            page =>
+            page.classList.add("hidden")
+        );
 
 
-    if(id === "ideas"){
+    const page =
+        document.getElementById(id);
+
+    if(page){
+        page.classList.remove("hidden");
+    }
+
+
+    document
+        .querySelectorAll(".navlinks button")
+        .forEach(
+            b =>
+            b.classList.remove("active")
+        );
+
+
+    if(button){
+        button.classList.add("active");
+    }
+
+
+    if(id==="ideas"){
         renderIdeas();
     }
 
 
-    if(id === "projects"){
+    if(id==="projects"){
         renderProjects();
     }
 
 
-    if(id === "matches"){
-        setupMatchProjects();
+    if(id==="matches"){
+        setupMatches();
     }
 
 
-    if(id === "dashboard"){
+    if(id==="skills"){
+        renderSkillGap();
+    }
+
+
+    if(id==="dashboard"){
         renderDashboard();
     }
 
 
-    if(id === "profile"){
-        loadProfile();
-    }
-
-
-    window.scrollTo(0,0);
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
 
 }
 
 
+/* =========================================================
+                         MODALS
+========================================================= */
 
-/* =====================================================
-   IDEA PAGE
-===================================================== */
+function openPostModal(){
+
+    document
+        .getElementById("postModal")
+        .classList.add("show");
+
+}
+
+
+function closeModal(id){
+
+    document
+        .getElementById(id)
+        .classList.remove("show");
+
+}
+
+
+/* =========================================================
+                    CLEAN SKILLS
+========================================================= */
+
+function cleanSkills(value){
+
+    return value
+        .split(",")
+        .map(
+            x => x.trim()
+        )
+        .filter(Boolean);
+
+}
+
+
+/* =========================================================
+                      POST IDEA
+========================================================= */
+
+function postIdea(){
+
+    const title =
+        document
+        .getElementById("ideaTitle")
+        .value
+        .trim();
+
+
+    const description =
+        document
+        .getElementById("ideaDescription")
+        .value
+        .trim();
+
+
+    const domain =
+        document
+        .getElementById("ideaDomainForm")
+        .value;
+
+
+    let teamSize =
+        Number(
+            document
+            .getElementById("teamSize")
+            .value
+        ) || 6;
+
+
+    const skills =
+        cleanSkills(
+            document
+            .getElementById("requiredSkills")
+            .value
+        );
+
+
+    const skillMembers =
+        document
+        .getElementById("skillMembers")
+        .value
+        .trim();
+
+
+    if(
+        !title ||
+        !description ||
+        skills.length===0
+    ){
+
+        alert(
+            "Please enter the title, description and required skills."
+        );
+
+        return;
+
+    }
+
+
+    /* maximum 6 */
+
+    teamSize =
+        Math.min(
+            6,
+            Math.max(
+                1,
+                teamSize
+            )
+        );
+
+
+    const analysis =
+        analyseIdea(
+            title + " " + description
+        );
+
+
+    const project = {
+
+        id:Date.now(),
+
+        title:title,
+
+        description:description,
+
+        domain:domain,
+
+        skills:skills,
+
+        teamSize:teamSize,
+
+        members:1,
+
+        owner:
+            profile.name ||
+            "You",
+
+        active:true,
+
+        skillMembers:skillMembers,
+
+        sih:analysis.sih,
+
+        similar:analysis.similar
+
+    };
+
+
+    projects.unshift(project);
+
+
+    saveAll();
+
+
+    closeModal("postModal");
+
+
+    document.getElementById(
+        "ideaTitle"
+    ).value="";
+
+
+    document.getElementById(
+        "ideaDescription"
+    ).value="";
+
+
+    document.getElementById(
+        "requiredSkills"
+    ).value="";
+
+
+    document.getElementById(
+        "skillMembers"
+    ).value="";
+
+
+    updateStats();
+
+
+    showPage("ideas");
+
+
+    renderIdeas();
+
+
+    setTimeout(
+        () => openIdea(project.id),
+        200
+    );
+
+}
+
+
+/* =========================================================
+                     RENDER IDEAS
+========================================================= */
 
 function renderIdeas(){
 
-    let search =
-    (
+    const box =
         document.getElementById(
-            "ideaSearch"
-        )?.value || ""
-    ).toLowerCase();
+            "ideasGrid"
+        );
 
 
-    let domain =
-    document.getElementById(
-        "ideaDomain"
-    )?.value || "";
-
-
-    let list =
-    projects.filter(p => {
-
-        let text =
+    const q =
         (
-            p.title +
-            " " +
-            p.description +
-            " " +
-            p.skills.join(" ")
+            document.getElementById(
+                "ideaSearch"
+            )?.value || ""
         ).toLowerCase();
 
 
-        return (
+    const domain =
+        document.getElementById(
+            "ideaDomain"
+        )?.value || "all";
 
-            text.includes(search)
+
+    const list =
+        projects.filter(
+            p =>
+
+            (
+                domain==="all" ||
+                p.domain===domain
+            )
 
             &&
 
             (
-                domain === ""
-                ||
-                p.domain === domain
-            )
+                p.title
+                .toLowerCase()
+                .includes(q)
 
+                ||
+
+                p.skills
+                .join(" ")
+                .toLowerCase()
+                .includes(q)
+            )
         );
 
-    });
 
+    if(!list.length){
 
-    let box =
-    document.getElementById(
-        "ideasList"
-    );
-
-
-    if(list.length === 0){
-
-        box.innerHTML = `
-
-        <div class="project">
-
-            <h2>
-                No idea found 😕
-            </h2>
-
-            <p class="muted">
-                Try another search.
-            </p>
-
-        </div>
-
-        `;
+        box.innerHTML =
+            '<div class="empty">No ideas found.</div>';
 
         return;
 
@@ -1497,618 +2128,407 @@ function renderIdeas(){
 
 
     box.innerHTML =
-    list
-    .map(
-        p => createIdeaCard(p)
-    )
-    .join("");
+        list.map(
+            p => `
+
+            <div class="card">
+
+                <h3>
+                    💡 ${escapeHTML(p.title)}
+                </h3>
+
+                <p class="muted">
+                    ${escapeHTML(p.description)}
+                </p>
+
+                <div class="tags">
+
+                    ${p.skills
+                        .map(
+                            s =>
+                            `<span class="tag">
+                                ${escapeHTML(s)}
+                            </span>`
+                        )
+                        .join("")
+                    }
+
+                </div>
+
+                <p>
+                    <b>Team:</b>
+                    ${p.members}/${p.teamSize} members
+                </p>
+
+                <div class="card-footer">
+
+                    <button
+                        class="smallbtn outline"
+                        onclick="openIdea(${p.id})">
+
+                        View Idea
+
+                    </button>
+
+
+                    <button
+                        class="smallbtn"
+                        onclick="openJoin(${p.id})">
+
+                        Request to Join
+
+                    </button>
+
+                </div>
+
+            </div>
+
+            `
+        ).join("");
 
 }
 
 
+/* =========================================================
+                     IDEA DETAILS
+========================================================= */
 
-/* =====================================================
-   IDEA CARD
-===================================================== */
+function openIdea(id){
 
-function createIdeaCard(p){
-
-    let filled =
-    p.members.length;
-
-
-    let available =
-    Math.max(
-        p.teamSize - filled,
-        0
-    );
+    const p =
+        projects.find(
+            x => x.id===id
+        );
 
 
-    let missing =
-    p.skills.filter(
-        skill =>
-        !p.members.some(
-            member =>
-            member
-            .toLowerCase()
-            .includes(
-                skill.toLowerCase()
-            )
-        )
-    );
+    if(!p)return;
 
 
-    return `
-
-    <div class="project">
-
-        <span class="badge">
-            ${escapeHTML(p.domain)}
-        </span>
+    document.getElementById(
+        "ideaModalTitle"
+    ).textContent =
+        p.title;
 
 
-        <h2 style="margin:12px 0">
-            ${escapeHTML(p.title)}
-        </h2>
+    const analysis =
+        analyseIdea(
+            p.title +
+            " " +
+            p.description
+        );
 
+
+    document.getElementById(
+        "ideaDetails"
+    ).innerHTML = `
 
         <p class="muted">
             ${escapeHTML(p.description)}
         </p>
 
 
-        <div class="skills">
+        <div class="tags">
 
-            <b>
-                Required Skills:
-            </b>
-
-            ${p.skills.map(
-                skill =>
-                `
-                <span class="skill">
-                    ${escapeHTML(skill)}
-                </span>
-                `
-            ).join("")}
+            ${p.skills
+                .map(
+                    s =>
+                    `<span class="tag">
+                        ${escapeHTML(s)}
+                    </span>`
+                )
+                .join("")
+            }
 
         </div>
 
 
-        <p>
-
-            👥
-
-            <b>
-                ${filled}/${p.teamSize}
-            </b>
-
-            Members
-
-            &nbsp; | &nbsp;
-
-            🟢
-
-            ${available}
-
-            Positions Available
-
-        </p>
-
-
-        <p class="muted">
-
-            👤 Posted by
-
-            <b>
-                ${escapeHTML(p.creator)}
-            </b>
-
-        </p>
-
-
-        ${
-            missing.length
-
-            ?
-
-            `
-
-            <div class="warning">
-
-                ⚠️
-
-                <b>
-                    Current Skill Gap:
-                </b>
-
-                ${missing.map(
-                    escapeHTML
-                ).join(", ")}
-
-                <br><br>
-
-                🤖 AI will suggest suitable
-                students and learning resources.
-
-            </div>
-
-            `
-
-            :
-
-            `
-
-            <div class="success">
-
-                ✅ Required skills are currently
-                covered.
-
-            </div>
-
-            `
-        }
-
-
-        <div class="actions">
-
-            <button
-                class="primary"
-                onclick="openJoin(${p.id})">
-
-                🤝 Request to Join
-
-            </button>
-
-
-            <button
-                class="secondary"
-                onclick="analyseIdea(${p.id})">
-
-                🤖 AI Analyse
-
-            </button>
-
-        </div>
-
-
-    </div>
-
-    `;
-
-}
-
-
-
-/* =====================================================
-   PROJECT PAGE
-===================================================== */
-
-function renderProjects(){
-
-    let box =
-    document.getElementById(
-        "projectsList"
-    );
-
-
-    let active =
-    projects.filter(
-        p => p.active
-    );
-
-
-    if(active.length === 0){
-
-        box.innerHTML = `
-        <div class="project">
-            <h2>No active projects yet.</h2>
-        </div>
-        `;
-
-        return;
-
-    }
-
-
-    box.innerHTML =
-    active.map(p => {
-
-        let percent =
-        Math.round(
-            p.members.length /
-            p.teamSize *
-            100
-        );
-
-
-        return `
-
-        <div class="team-card">
-
-            <span class="badge">
-                ${escapeHTML(p.domain)}
-            </span>
-
-
-            <h2 style="margin:12px 0">
-                ${escapeHTML(p.title)}
-            </h2>
-
-
-            <p class="muted">
-                ${escapeHTML(p.description)}
-            </p>
-
+        <div class="analysis-box">
+
+            <h3>
+                🤖 AI Idea Analysis
+            </h3>
 
             <br>
 
+            <p>
+                <b>Domain:</b>
+                ${escapeHTML(p.domain)}
+            </p>
 
             <p>
+                <b>Team Size:</b>
+                ${p.teamSize} maximum
+            </p>
 
-                👥
+            <p>
+                <b>Required Skills:</b>
+                ${p.skills.join(", ")}
+            </p>
 
-                <b>
-                    ${p.members.length}/${p.teamSize}
-                </b>
+            <p>
+                <b>Members Needed:</b>
+                ${escapeHTML(
+                    p.skillMembers ||
+                    "Not specified"
+                )}
+            </p>
 
-                Members
+            <br>
 
+            <p>
+                <b>SIH Relevance:</b>
+                ${escapeHTML(analysis.sih)}
+            </p>
+
+            <p>
+                <b>Similar Idea Check:</b>
+                ${escapeHTML(analysis.similar)}
             </p>
 
 
-            <div class="progress">
+            ${
+                analysis.similar !==
+                "No strong similarity found."
+                ?
 
-                <span
-                    style="width:${Math.min(
-                        percent,
-                        100
-                    )}%">
-                </span>
+                `<p class="warning"
+                    style="margin-top:10px">
 
-            </div>
+                    💡 Suggestion:
+                    Add a unique feature,
+                    target group or workflow.
+                    A similar idea does not mean
+                    the idea must be rejected.
 
+                </p>`
 
-            <p>
-                ${percent}% Team Filled
-            </p>
+                :
 
+                ""
 
-            <div class="skills">
-
-                ${p.skills.map(
-                    skill =>
-                    `
-                    <span class="skill">
-                        ${escapeHTML(skill)}
-                    </span>
-                    `
-                ).join("")}
-
-            </div>
-
-
-            <div>
-
-                <button
-                    class="primary"
-                    onclick="openTeam(${p.id})">
-
-                    View Project / Team
-
-                </button>
-
-
-                <button
-                    class="secondary"
-                    onclick="openJoin(${p.id})">
-
-                    Request to Join
-
-                </button>
-
-            </div>
+            }
 
         </div>
 
-        `;
 
-    }).join("");
+        <button
+            class="btn primary"
+            style="margin-top:15px"
+            onclick="
+                closeModal('ideaModal');
+                openJoin(${p.id})
+            ">
 
-}
+            Request to Join →
 
-
-
-/* =====================================================
-   MATCH PROJECT SELECT
-===================================================== */
-
-function setupMatchProjects(){
-
-    let select =
-    document.getElementById(
-        "matchProject"
-    );
-
-
-    select.innerHTML =
-    projects.map(
-        p =>
-        `
-        <option value="${p.id}">
-            ${escapeHTML(p.title)}
-        </option>
-        `
-    ).join("");
-
-
-    runMatching();
-
-}
-
-
-
-/* =====================================================
-   DEMO STUDENTS
-===================================================== */
-
-const demoStudents = [
-
-{
-
-name:"Aarav",
-
-skills:[
-    "Python",
-    "Machine Learning"
-],
-
-levels:{
-    Python:"Intermediate",
-    "Machine Learning":"Beginner"
-},
-
-interest:
-"AI/ML"
-
-},
-
-
-{
-
-name:"Riya",
-
-skills:[
-    "UI/UX",
-    "Figma"
-],
-
-levels:{
-    "UI/UX":"Intermediate",
-    Figma:"Beginner"
-},
-
-interest:
-"Design"
-
-},
-
-
-{
-
-name:"Rahul",
-
-skills:[
-    "Java",
-    "SQL",
-    "Database"
-],
-
-levels:{
-    Java:"Intermediate",
-    SQL:"Beginner",
-    Database:"Beginner"
-},
-
-interest:
-"Web Development"
-
-},
-
-
-{
-
-name:"Ananya",
-
-skills:[
-    "Python",
-    "AI",
-    "Machine Learning"
-],
-
-levels:{
-    Python:"Intermediate",
-    AI:"Beginner",
-    "Machine Learning":"Beginner"
-},
-
-interest:
-"AI"
-
-},
-
-
-{
-
-name:"Meera",
-
-skills:[
-    "HTML",
-    "JavaScript",
-    "UI/UX"
-],
-
-levels:{
-    HTML:"Intermediate",
-    JavaScript:"Beginner",
-    "UI/UX":"Intermediate"
-},
-
-interest:
-"Education"
-
-}
-
-];
-
-
-
-/* =====================================================
-   AI MATCHING
-===================================================== */
-
-function runMatching(){
-
-    let select =
-    document.getElementById(
-        "matchProject"
-    );
-
-
-    if(!select){
-        return;
-    }
-
-
-    let projectID =
-    Number(select.value);
-
-
-    let project =
-    projects.find(
-        p => p.id === projectID
-    );
-
-
-    if(!project){
-        return;
-    }
-
-
-    let students =
-    [...demoStudents];
-
-
-    if(profile.name){
-
-        students.unshift(
-            profile
-        );
-
-    }
-
-
-    let results =
-    students
-    .map(
-        student =>
-        calculateMatch(
-            student,
-            project
-        )
-    )
-    .sort(
-        (a,b) =>
-        b.score-a.score
-    );
-
-
-    matchCount =
-    results.length;
-
-
-    saveData();
-    updateStats();
-
-
-    document.getElementById(
-        "matchResults"
-    ).innerHTML = `
-
-    <h2 class="title">
-        Recommended Students
-    </h2>
-
-    <p class="muted">
-
-        Match percentage sirf guidance hai.
-
-        Skill gap hone par automatic rejection nahi hota.
-
-    </p>
-
-
-    <div class="match-grid">
-
-        ${results.map(
-            result =>
-            matchCard(
-                result,
-                project
-            )
-        ).join("")}
-
-    </div>
+        </button>
 
     `;
 
+
+    document
+        .getElementById("ideaModal")
+        .classList.add("show");
+
 }
 
 
+/* =========================================================
+                     SIH ANALYSIS DEMO
+========================================================= */
 
-/* =====================================================
-   MATCH CALCULATION
-===================================================== */
+function analyseIdea(text){
+
+    const t =
+        text.toLowerCase();
+
+
+    let sih =
+        "No direct sample SIH relevance found.";
+
+
+    if(
+        t.includes("waste") ||
+        t.includes("food")
+    ){
+
+        sih =
+        "Potential relevance: smart waste and sustainable campus problem area.";
+
+    }
+
+    else if(
+        t.includes("education") ||
+        t.includes("study") ||
+        t.includes("student")
+    ){
+
+        sih =
+        "Potential relevance: smart education and student collaboration problem area.";
+
+    }
+
+    else if(
+        t.includes("health") ||
+        t.includes("fitness")
+    ){
+
+        sih =
+        "Potential relevance: health and wellness technology problem area.";
+
+    }
+
+    else if(
+        t.includes("farmer") ||
+        t.includes("agriculture")
+    ){
+
+        sih =
+        "Potential relevance: agriculture technology problem area.";
+
+    }
+
+
+    let similarProject = null;
+
+
+    for(
+        const p of projects
+    ){
+
+        const words =
+            p.title
+            .toLowerCase()
+            .split(" ");
+
+
+        const found =
+            words.some(
+                w =>
+                    w.length > 4 &&
+                    t.includes(w)
+            );
+
+
+        if(found){
+
+            similarProject=p;
+
+            break;
+
+        }
+
+    }
+
+
+    let similar =
+        "No strong similarity found.";
+
+
+    if(similarProject){
+
+        similar =
+            `Similar to "${similarProject.title}". Consider adding a unique feature or different target users.`;
+
+    }
+
+
+    return {
+        sih:sih,
+        similar:similar
+    };
+
+}
+
+
+/* =========================================================
+                       MATCH SETUP
+========================================================= */
+
+function setupMatches(){
+
+    const active =
+        projects.find(
+            p => p.active
+        ) ||
+        projects[0];
+
+
+    if(!active){
+
+        document.getElementById(
+            "matchProjectBox"
+        ).innerHTML =
+            "<p>No project available. Post an idea first.</p>";
+
+        return;
+
+    }
+
+
+    document.getElementById(
+        "matchProjectBox"
+    ).innerHTML = `
+
+        <h3>
+            Matching students for:
+            ${escapeHTML(active.title)}
+        </h3>
+
+        <p class="muted">
+
+            Required skills:
+            ${active.skills.join(", ")}
+
+            ·
+
+            Team size:
+            ${active.teamSize}
+
+        </p>
+
+    `;
+
+
+    runMatching(false);
+
+}
+
+
+/* =========================================================
+                     CALCULATE MATCH
+========================================================= */
 
 function calculateMatch(
     student,
     project
 ){
 
-    let studentSkills =
-    (student.skills || [])
-    .map(
-        x =>
-        x.toLowerCase()
-    );
+    const required =
+        project.skills.map(
+            s => s.toLowerCase()
+        );
 
 
-    let matched = 0;
+    const have =
+        student.skills.map(
+            s => s.toLowerCase()
+        );
 
 
-    project.skills.forEach(
-        required => {
+    let matched=0;
 
-            let found =
-            studentSkills.some(
-                skill =>
 
-                skill ===
-                required.toLowerCase()
+    required.forEach(
+        r => {
 
-                ||
-
-                skill.includes(
-                    required.toLowerCase()
-                )
-
-                ||
-
-                required
-                .toLowerCase()
-                .includes(skill)
-
-            );
+            const found =
+                have.some(
+                    h =>
+                        h===r ||
+                        h.includes(r) ||
+                        r.includes(h)
+                );
 
 
             if(found){
@@ -2120,154 +2540,1049 @@ function calculateMatch(
 
 
     let score =
-    Math.round(
-        matched /
-        project.skills.length *
-        80
-    );
+        required.length
+        ?
+        Math.round(
+            (matched / required.length) * 100
+        )
+        :
+        0;
 
 
     if(
         student.interest &&
-        project.description
+        student.interest
         .toLowerCase()
-        .includes(
-            student.interest
-            .toLowerCase()
-        )
+        ===
+        project.domain
+        .toLowerCase()
     ){
 
-        score += 10;
+        score =
+            Math.min(
+                100,
+                score + 10
+            );
 
     }
 
 
-    score =
-    Math.min(
-        score + 10,
-        100
-    );
-
-
-    let gaps =
-    project.skills.filter(
-        required =>
-
-        !studentSkills.some(
-            skill =>
-
-            skill ===
-            required.toLowerCase()
-
-            ||
-
-            skill.includes(
-                required.toLowerCase()
+    const gaps =
+        required.filter(
+            r =>
+            !have.some(
+                h =>
+                    h===r ||
+                    h.includes(r) ||
+                    r.includes(h)
             )
-
-            ||
-
-            required
-            .toLowerCase()
-            .includes(skill)
-
-        )
-
-    );
+        );
 
 
     return {
-
-        ...student,
-
         score,
-
+        matched,
         gaps
-
     };
 
 }
 
 
+/* =========================================================
+                     RUN MATCHING
+========================================================= */
 
-/* =====================================================
-   MATCH CARD
-===================================================== */
+function runMatching(save=true){
 
-function matchCard(
-    result,
-    project
+    const project =
+        projects.find(
+            p => p.active
+        ) ||
+        projects[0];
+
+
+    if(!project)return;
+
+
+    const results =
+        students
+        .map(
+            s => {
+
+                const result =
+                    calculateMatch(
+                        s,
+                        project
+                    );
+
+
+                return {
+
+                    student:s,
+
+                    ...result
+
+                };
+
+            }
+        )
+        .sort(
+            (a,b) =>
+                b.score-a.score
+        );
+
+
+    matchCount =
+        results.length;
+
+
+    if(save){
+        saveAll();
+    }
+
+
+    document.getElementById(
+        "matchesGrid"
+    ).innerHTML =
+
+        results
+        .map(
+            r => `
+
+            <div class="card match-card">
+
+                <div
+                    style="
+                    display:flex;
+                    justify-content:space-between;
+                    gap:10px">
+
+                    <div>
+
+                        <h3>
+                            👤
+                            ${escapeHTML(
+                                r.student.name
+                            )}
+                        </h3>
+
+                        <p class="muted">
+                            ${escapeHTML(
+                                r.student.interest
+                            )}
+                        </p>
+
+                    </div>
+
+
+                    <div class="match-score">
+
+                        ${r.score}%
+
+                    </div>
+
+                </div>
+
+
+                <p>
+                    <b>Skills:</b>
+                    ${r.student.skills.join(", ")}
+                </p>
+
+
+                <p style="margin-top:8px">
+
+                    <b>Match:</b>
+
+                    ${
+                        r.score>=80
+                        ?
+                        "Strong Match"
+                        :
+                        r.score>=60
+                        ?
+                        "Good Potential"
+                        :
+                        "Potential Match"
+                    }
+
+                </p>
+
+
+                ${
+                    r.gaps.length
+
+                    ?
+
+                    `
+
+                    <p
+                        class="warning"
+                        style="margin-top:8px">
+
+                        Skill Gap:
+                        ${r.gaps.join(", ")}
+
+                    </p>
+
+
+                    <p class="muted">
+
+                        Suggested:
+                        Learn the basics of
+                        ${r.gaps.join(", ")}
+
+                    </p>
+
+                    `
+
+                    :
+
+                    `
+
+                    <p
+                        class="success"
+                        style="margin-top:8px">
+
+                        ✓ No major skill gap detected.
+
+                    </p>
+
+                    `
+
+                }
+
+
+                <div class="card-footer">
+
+
+                    <button
+                        class="smallbtn outline"
+                        onclick="
+                            viewStudent(
+                                '${r.student.name}'
+                            )
+                        ">
+
+                        View Profile
+
+                    </button>
+
+
+                    <button
+                        class="smallbtn"
+                        onclick="
+                            selectStudentJoin(
+                                ${project.id},
+                                '${r.student.name}'
+                            )
+                        ">
+
+                        Request to Join
+
+                    </button>
+
+
+                </div>
+
+            </div>
+
+            `
+        )
+        .join("");
+
+
+    updateStats();
+
+}
+
+
+/* =========================================================
+                     VIEW STUDENT
+========================================================= */
+
+function viewStudent(name){
+
+    const s =
+        students.find(
+            x => x.name===name
+        );
+
+
+    if(!s)return;
+
+
+    alert(
+
+        "Name: " +
+        s.name +
+
+        "\n\nSkills: " +
+        s.skills.join(", ") +
+
+        "\n\nInterest: " +
+        s.interest
+
+    );
+
+}
+
+
+/* =========================================================
+                  SELECT STUDENT JOIN
+========================================================= */
+
+function selectStudentJoin(
+    projectId,
+    name
 ){
 
-    let learning = "";
+    selectedStudent=name;
+
+    openJoin(
+        projectId,
+        name
+    );
+
+}
 
 
-    if(result.gaps.length){
+/* =========================================================
+                       OPEN JOIN
+========================================================= */
 
-        learning =
-        result.gaps
-        .map(
-            skill =>
-            learningSuggestion(
-                skill
-            )
-        )
-        .join(" • ");
+function openJoin(
+    projectId,
+    studentName="You"
+){
+
+    const p =
+        projects.find(
+            x => x.id===projectId
+        );
+
+
+    if(!p)return;
+
+
+    selectedProjectId =
+        projectId;
+
+
+    document.getElementById(
+        "joinProjectName"
+    ).textContent =
+        "Project: " +
+        p.title;
+
+
+    let info="";
+
+
+    if(studentName!=="You"){
+
+        const s =
+            students.find(
+                x =>
+                x.name===studentName
+            );
+
+
+        const r =
+            calculateMatch(
+                s,
+                p
+            );
+
+
+        info = `
+
+            <b>
+                ${escapeHTML(s.name)}'s
+                AI Match:
+                ${r.score}%
+            </b>
+
+            <br>
+
+            Skills:
+            ${s.skills.join(", ")}
+
+            <br>
+
+            ${
+                r.gaps.length
+
+                ?
+
+                `
+                <span class="warning">
+                    Skill gap:
+                    ${r.gaps.join(", ")}
+                </span>
+
+                <br>
+
+                <span class="muted">
+                    The student can still request to join.
+                </span>
+                `
+
+                :
+
+                `
+                <span class="success">
+                    No major skill gap detected.
+                </span>
+                `
+            }
+
+        `;
+
+    }
+
+    else{
+
+        const current = {
+
+            skills:
+                profile.skills,
+
+            interest:
+                profile.interests[0] || ""
+
+        };
+
+
+        const r =
+            calculateMatch(
+                current,
+                p
+            );
+
+
+        info = `
+
+            <b>
+                Your estimated match:
+                ${r.score}%
+            </b>
+
+            <br><br>
+
+            ${
+                r.gaps.length
+
+                ?
+
+                `
+
+                <span class="warning">
+
+                    Skill gap:
+                    ${r.gaps.join(", ")}
+
+                </span>
+
+                <br>
+
+                <span class="muted">
+
+                    You are still allowed
+                    to send a request.
+
+                </span>
+
+                `
+
+                :
+
+                `
+
+                <span class="success">
+
+                    Your skills match
+                    the project requirements well.
+
+                </span>
+
+                `
+
+            }
+
+        `;
 
     }
 
 
-    return `
+    document.getElementById(
+        "joinMatchInfo"
+    ).innerHTML =
+        info;
 
-    <div class="match-card">
 
-        <h2>
-            ${escapeHTML(
-                result.name ||
-                "Student"
-            )}
-        </h2>
+    document
+        .getElementById("joinModal")
+        .classList.add("show");
+
+}
+
+
+/* =========================================================
+                    SEND JOIN REQUEST
+========================================================= */
+
+function sendJoinRequest(){
+
+    const reason =
+        document
+        .getElementById("joinReason")
+        .value
+        .trim();
+
+
+    if(!reason){
+
+        alert(
+            "Please explain why you want to join."
+        );
+
+        return;
+
+    }
+
+
+    const p =
+        projects.find(
+            x =>
+            x.id===selectedProjectId
+        );
+
+
+    if(!p)return;
+
+
+    joinRequests.push({
+
+        id:Date.now(),
+
+        projectId:
+            selectedProjectId,
+
+        project:
+            p.title,
+
+        from:
+            profile.name ||
+            "Student",
+
+        reason:reason,
+
+        status:"Pending"
+
+    });
+
+
+    saveAll();
+
+
+    document.getElementById(
+        "joinReason"
+    ).value="";
+
+
+    closeModal("joinModal");
+
+
+    alert(
+        "Join request sent successfully!"
+    );
+
+
+    renderDashboard();
+
+}
+
+
+/* =========================================================
+                     RENDER PROJECTS
+========================================================= */
+
+function renderProjects(){
+
+    const box =
+        document.getElementById(
+            "projectsGrid"
+        );
+
+
+    const list =
+        projects.filter(
+            p => p.active
+        );
+
+
+    if(!list.length){
+
+        box.innerHTML =
+            '<div class="empty">No active projects yet.</div>';
+
+        return;
+
+    }
+
+
+    box.innerHTML =
+        list.map(
+            p => `
+
+            <div class="card">
+
+                <h3>
+                    🏆
+                    ${escapeHTML(p.title)}
+                </h3>
+
+
+                <p class="muted">
+
+                    ${escapeHTML(
+                        p.description
+                    )}
+
+                </p>
+
+
+                <div class="tags">
+
+                    ${p.skills
+                        .map(
+                            s =>
+                            `<span class="tag">
+                                ${escapeHTML(s)}
+                            </span>`
+                        )
+                        .join("")
+                    }
+
+                </div>
+
+
+                <p>
+
+                    <b>Team:</b>
+                    ${p.members}/${p.teamSize} members
+
+                </p>
+
+
+                <div class="team-members">
+
+                    <span class="member">
+                        👤
+                        ${escapeHTML(p.owner)}
+                    </span>
+
+                    <span class="member">
+                        🔒 Private Team
+                    </span>
+
+                </div>
+
+
+                <div class="card-footer">
+
+                    <button
+                        class="smallbtn outline"
+                        onclick="
+                            openTeam(${p.id})
+                        ">
+
+                        View Team
+
+                    </button>
+
+
+                    <button
+                        class="smallbtn"
+                        onclick="
+                            openJoin(${p.id})
+                        ">
+
+                        Join Team
+
+                    </button>
+
+                </div>
+
+            </div>
+
+            `
+        )
+        .join("");
+
+}
+
+
+/* =========================================================
+                      OPEN TEAM
+========================================================= */
+
+function openTeam(id){
+
+    const p =
+        projects.find(
+            x => x.id===id
+        );
+
+
+    if(!p)return;
+
+
+    selectedProjectId=id;
+
+
+    document.getElementById(
+        "teamInfo"
+    ).innerHTML = `
+
+        <h3>
+            ${escapeHTML(p.title)}
+        </h3>
+
+        <p class="muted">
+
+            Team:
+            ${p.members}/${p.teamSize}
+
+            ·
+
+            Required:
+            ${p.skills.join(", ")}
+
+        </p>
+
+    `;
+
+
+    renderMessages();
+
+
+    document
+        .getElementById("teamModal")
+        .classList.add("show");
+
+}
+
+
+/* =========================================================
+                    RENDER MESSAGES
+========================================================= */
+
+function renderMessages(){
+
+    const box =
+        document.getElementById(
+            "chatBox"
+        );
+
+
+    const list =
+        messages.filter(
+            m =>
+            m.projectId===selectedProjectId
+        );
+
+
+    if(!list.length){
+
+        box.innerHTML = `
+
+            <p class="muted">
+
+                No messages yet.
+                Start your private team discussion.
+
+            </p>
+
+        `;
+
+        return;
+
+    }
+
+
+    box.innerHTML =
+        list.map(
+            m => `
+
+            <div
+                class="msg
+                ${m.from==="You" ? "me" : ""}">
+
+                <b>
+                    ${escapeHTML(m.from)}
+                </b>
+
+                <br>
+
+                ${escapeHTML(m.text)}
+
+            </div>
+
+            `
+        )
+        .join("");
+
+
+    box.scrollTop =
+        box.scrollHeight;
+
+}
+
+
+/* =========================================================
+                    SEND MESSAGE
+========================================================= */
+
+function sendMessage(){
+
+    const input =
+        document.getElementById(
+            "chatInput"
+        );
+
+
+    const text =
+        input.value.trim();
+
+
+    if(!text)return;
+
+
+    messages.push({
+
+        projectId:
+            selectedProjectId,
+
+        from:"You",
+
+        text:text
+
+    });
+
+
+    input.value="";
+
+
+    saveAll();
+
+
+    renderMessages();
+
+}
+
+
+/* =========================================================
+                    SAVE PROFILE
+========================================================= */
+
+function saveProfile(){
+
+    profile.name =
+        document
+        .getElementById("profileName")
+        .value
+        .trim();
+
+
+    profile.course =
+        document
+        .getElementById("profileCourse")
+        .value
+        .trim();
+
+
+    profile.skills =
+        cleanSkills(
+            document
+            .getElementById("profileSkills")
+            .value
+        );
+
+
+    profile.interests =
+        cleanSkills(
+            document
+            .getElementById("profileInterests")
+            .value
+        );
+
+
+    if(!profile.name){
+
+        alert(
+            "Please enter your name."
+        );
+
+        return;
+
+    }
+
+
+    saveAll();
+
+
+    updateStats();
+
+
+    renderSkillGap();
+
+
+    const status =
+        document.getElementById(
+            "profileStatus"
+        );
+
+
+    status.textContent =
+        "Profile saved successfully. AI matching can now use your skills.";
+
+
+    status.classList.remove(
+        "hidden"
+    );
+
+}
+
+
+/* =========================================================
+                    LOAD PROFILE
+========================================================= */
+
+function loadProfile(){
+
+    document.getElementById(
+        "profileName"
+    ).value =
+        profile.name;
+
+
+    document.getElementById(
+        "profileCourse"
+    ).value =
+        profile.course;
+
+
+    document.getElementById(
+        "profileSkills"
+    ).value =
+        profile.skills.join(", ");
+
+
+    document.getElementById(
+        "profileInterests"
+    ).value =
+        profile.interests.join(", ");
+
+}
+
+
+/* =========================================================
+                     SKILL GAP
+========================================================= */
+
+function renderSkillGap(){
+
+    const box =
+        document.getElementById(
+            "skillGapBox"
+        );
+
+
+    const p =
+        projects.find(
+            x => x.active
+        );
+
+
+    if(!p){
+
+        box.innerHTML = `
+
+            <h3>
+                No project selected
+            </h3>
+
+            <p class="muted">
+
+                Explore a project to
+                see skill-gap suggestions.
+
+            </p>
+
+        `;
+
+        return;
+
+    }
+
+
+    const result =
+        calculateMatch(
+
+            {
+                skills:profile.skills,
+
+                interest:
+                    profile.interests[0] || ""
+
+            },
+
+            p
+
+        );
+
+
+    box.innerHTML = `
+
+        <h3>
+            🎯 Your Skill Gap
+        </h3>
 
 
         <p class="muted">
 
-            Interested in:
-
-            ${escapeHTML(
-                result.interest ||
-                "Projects"
-            )}
+            Project:
+            ${escapeHTML(p.title)}
 
         </p>
 
 
-        <div class="skills">
+        <p style="margin-top:12px">
 
-            ${(result.skills || [])
-            .map(
-                skill =>
-                `
-                <span class="skill">
-                    ${escapeHTML(skill)}
+            Required:
+            ${p.skills.join(", ")}
+
+        </p>
+
+
+        <div
+            style="margin:15px 0">
+
+            <b>
+                Current Match:
+                ${result.score}%
+            </b>
+
+            <div class="progress">
+
+                <span
+                    style="
+                    width:${result.score}%">
                 </span>
-                `
-            ).join("")}
 
-        </div>
-
-
-        <div class="score">
-
-            ${result.score}% Match
-
-        </div>
-
-
-        <div class="progress">
-
-            <span
-                style="width:${result.score}%">
-            </span>
+            </div>
 
         </div>
 
@@ -2279,34 +3594,28 @@ function matchCard(
 
             `
 
-            <div class="warning">
+            <p class="warning">
 
-                ⚠️
+                Skills to improve:
+                ${result.gaps.join(", ")}
 
-                <b>
-                    Skill Gap:
-                </b>
-
-                ${result.gaps
-                .map(
-                    escapeHTML
-                ).join(", ")}
+            </p>
 
 
-                <br><br>
-
-
-                📚
+            <div class="analysis-box">
 
                 <b>
-                    AI Learning Suggestions:
+                    Learning Suggestions
                 </b>
 
+                <p class="muted">
 
-                <br>
+                    Start with the basics of
+                    ${result.gaps.join(", ")}.
+                    You can learn these skills
+                    while contributing to the team.
 
-
-                ${learning}
+                </p>
 
             </div>
 
@@ -2316,1633 +3625,283 @@ function matchCard(
 
             `
 
-            <div class="success">
+            <p class="success">
 
-                ✅
+                ✓ No major skill gap for this project.
 
-                Your skills cover
-                most of the project requirements.
-
-            </div>
+            </p>
 
             `
+
         }
-
-
-        <div class="info">
-
-            💡
-
-            <b>
-                Important:
-            </b>
-
-            Skill gap hone ke baad bhi
-            student team join karne ke liye
-            request bhej sakta hai.
-
-            Team members milkar
-            ek dusre ko help kar sakte hain.
-
-        </div>
-
-
-        <button
-            class="primary"
-            onclick="openJoin(${project.id})">
-
-            🤝 Request to Join
-
-        </button>
-
-    </div>
 
     `;
 
 }
 
 
+/* =========================================================
+                  LEARNING PATH
+========================================================= */
 
-/* =====================================================
-   LEARNING SUGGESTION
-===================================================== */
+function learning(skill){
 
-function learningSuggestion(
-    skill
-){
+    const paths={
 
-    let s =
-    skill.toLowerCase();
+        "Python":
+        "Python Basics → Variables → Conditions → Loops → Functions → Data Structures → NumPy → ML Basics",
 
+        "Machine Learning":
+        "Python → Data Handling → ML Concepts → Model Training → Evaluation",
 
-    if(
-        s.includes("python")
-    ){
+        "UI/UX":
+        "Design Basics → User Flow → Wireframes → Figma → Prototype",
 
-        return `
-        Python OOP + File Handling
-        `;
+        "Web Development":
+        "HTML → CSS → JavaScript → DOM → APIs",
 
-    }
+        "App Development":
+        "UI → Flutter / Android Basics → APIs → Database → Testing",
 
+        "Database":
+        "SQL Basics → Tables → Queries → Relationships → Database Design"
 
-    if(
-        s.includes("machine")
-    ){
-
-        return `
-        Machine Learning Basics + NumPy + Pandas
-        `;
-
-    }
-
-
-    if(
-        s.includes("ui")
-    ){
-
-        return `
-        UI/UX Basics + Wireframing
-        `;
-
-    }
-
-
-    if(
-        s.includes("database")
-        ||
-        s.includes("sql")
-    ){
-
-        return `
-        SQL + Database Basics
-        `;
-
-    }
-
-
-    if(
-        s.includes("javascript")
-    ){
-
-        return `
-        JavaScript Fundamentals
-        `;
-
-    }
-
-
-    if(
-        s.includes("html")
-    ){
-
-        return `
-        HTML + CSS Basics
-        `;
-
-    }
-
-
-    return (
-        skill +
-        " Fundamentals + Practice"
-    );
-
-}
-
-
-
-/* =====================================================
-   AI IDEA ANALYSIS
-===================================================== */
-
-function analyseIdea(
-    id
-){
-
-    let project =
-    projects.find(
-        p => p.id === id
-    );
-
-
-    if(!project){
-        return;
-    }
-
-
-    let text =
-    (
-        project.title +
-        " " +
-        project.description
-    ).toLowerCase();
-
-
-    let sihMatch =
-    null;
-
-
-    if(
-        text.includes("mess")
-        ||
-        text.includes("food waste")
-    ){
-
-        sihMatch = {
-            id:"SIH-DEMO-FOOD",
-            name:"Smart Food / Waste related problem"
-        };
-
-    }
-
-
-    else if(
-        text.includes("education")
-        ||
-        text.includes("study")
-        ||
-        text.includes("student")
-    ){
-
-        sihMatch = {
-            id:"SIH-DEMO-EDU",
-            name:"Education / Student related problem"
-        };
-
-    }
-
-
-    else if(
-        text.includes("waste")
-    ){
-
-        sihMatch = {
-            id:"SIH-DEMO-WASTE",
-            name:"Waste Management related problem"
-        };
-
-    }
-
-
-    let similar =
-    projects.filter(
-        p =>
-        p.id !== id
-        &&
-        similarity(
-            text,
-            (
-                p.title +
-                " " +
-                p.description
-            ).toLowerCase()
-        ) > 0.35
-    );
-
-
-    let message = "";
-
-
-    if(sihMatch){
-
-        message += `
-
-        🤖 Possible SIH Relevance Found!
-
-        Your idea appears related to:
-
-        ${sihMatch.name}
-
-        Suggested Problem Statement ID:
-
-        ${sihMatch.id}
-
-        `;
-
-    }
-
-    else{
-
-        message += `
-
-        🤖 No strong SIH match found
-        in the current demo dataset.
-
-        Your idea can still be used for:
-
-        College Projects,
-        Hackathons,
-        Research,
-        Assignments,
-        Innovation Projects.
-
-        `;
-
-    }
-
-
-    if(similar.length){
-
-        message += `
-
-        ⚠️ Similar Idea Found:
-
-        ${similar
-        .map(
-            x => x.title
-        )
-        .join(", ")}
-
-
-        IMPORTANT:
-
-        This is NOT a rejection.
-
-        AI Suggestion:
-
-        Modify your idea by adding
-        a unique feature, different
-        target users, better workflow
-        or a different implementation.
-
-        `;
-
-    }
-
-    else{
-
-        message += `
-
-        ✨ No similar idea found
-        in the current CampusConnect ideas.
-
-        Keep developing your idea!
-
-        `;
-
-    }
-
-
-    alert(message);
-
-}
-
-
-
-/* =====================================================
-   SIMPLE SIMILARITY
-===================================================== */
-
-function similarity(
-    a,
-    b
-){
-
-    let A =
-    new Set(
-        a
-        .split(/\W+/)
-        .filter(
-            x => x.length > 3
-        )
-    );
-
-
-    let B =
-    new Set(
-        b
-        .split(/\W+/)
-        .filter(
-            x => x.length > 3
-        )
-    );
-
-
-    let common = 0;
-
-
-    A.forEach(
-        word => {
-
-            if(B.has(word)){
-                common++;
-            }
-
-        }
-    );
-
-
-    return (
-        common /
-        Math.max(
-            1,
-            Math.min(
-                A.size,
-                B.size
-            )
-        )
-    );
-
-}
-
-
-
-/* =====================================================
-   JOIN REQUEST
-===================================================== */
-
-function openJoin(
-    id
-){
-
-    let project =
-    projects.find(
-        p => p.id === id
-    );
-
-
-    if(!project){
-        return;
-    }
-
-
-    document.getElementById(
-        "teamContent"
-    ).innerHTML = `
-
-    <h2>
-        🤝 Request to Join
-    </h2>
-
-
-    <br>
-
-
-    <h3>
-        ${escapeHTML(
-            project.title
-        )}
-    </h3>
-
-
-    <br>
-
-
-    <div class="info">
-
-        🤖 AI will analyse your skills.
-
-        Even if you have a skill gap,
-        your request will NOT be automatically rejected.
-
-    </div>
-
-
-    <label>
-        Why do you want to join?
-    </label>
-
-
-    <textarea
-        id="joinReason"
-        placeholder="Example: I am interested in this project and want to improve my skills with the team."
-    ></textarea>
-
-
-    <button
-        class="primary"
-        onclick="sendJoinRequest(${id})">
-
-        Send Join Request
-
-    </button>
-
-    `;
-
-
-    document.getElementById(
-        "teamModal"
-    ).style.display =
-    "flex";
-
-}
-
-
-
-/* =====================================================
-   SEND REQUEST
-===================================================== */
-
-function sendJoinRequest(
-    id
-){
-
-    let project =
-    projects.find(
-        p => p.id === id
-    );
-
-
-    if(!profile.name){
-
-        alert(
-            "Please create your Student Profile first."
-        );
-
-
-        closeTeam();
-
-
-        showSection(
-            "profile"
-        );
-
-
-        return;
-
-    }
-
-
-    if(
-        project.members
-        .includes(
-            profile.name
-        )
-    ){
-
-        alert(
-            "You are already a member of this team."
-        );
-
-        return;
-
-    }
-
-
-    let reason =
-    document
-    .getElementById(
-        "joinReason"
-    )
-    .value
-    .trim();
-
-
-    joinRequests.push({
-
-        projectId:id,
-
-        name:
-        profile.name,
-
-        reason:
-        reason,
-
-        status:
-        "Pending"
-
-    });
-
-
-    saveData();
-
-
-    closeTeam();
+    };
 
 
     alert(
-        "✅ Join request sent!\n\n" +
-        "The team owner can review your request."
+        skill +
+        " Learning Path:\n\n" +
+        paths[skill]
     );
-
-
-    renderDashboard();
 
 }
 
 
+/* =========================================================
+                     DASHBOARD
+========================================================= */
 
-/* =====================================================
-   TEAM PAGE
-===================================================== */
+function renderDashboard(){
 
-function openTeam(
-    id
-){
-
-    let project =
-    projects.find(
-        p => p.id === id
-    );
+    const box =
+        document.getElementById(
+            "dashboardBox"
+        );
 
 
-    if(!project){
-        return;
-    }
+    box.innerHTML = `
+
+        <div class="grid">
 
 
-    let requests =
-    joinRequests.filter(
-        r =>
-        r.projectId === id
-    );
+            <div class="card">
 
+                <h3>
+                    👤 Profile
+                </h3>
 
-    let requestHTML =
-    "";
+                <p>
+                    ${escapeHTML(
+                        profile.name ||
+                        "Not completed"
+                    )}
+                </p>
 
+                <p class="muted">
 
-    if(requests.length){
+                    ${
+                        profile.skills.length
+                        ?
+                        profile.skills.join(", ")
+                        :
+                        "Add your skills"
+                    }
 
-        requestHTML =
-        requests
-        .map(
-            request => `
-
-            <div class="member">
-
-                <div>
-
-                    <b>
-                        ${escapeHTML(
-                            request.name
-                        )}
-                    </b>
-
-                    <br>
-
-                    <small>
-
-                        ${escapeHTML(
-                            request.reason ||
-                            "Interested in joining"
-                        )}
-
-                    </small>
-
-                </div>
+                </p>
 
 
                 <button
-                    class="primary"
+                    class="smallbtn"
                     onclick="
-                    acceptRequest(
-                        ${id},
-                        '${escapeHTML(
-                            request.name
-                        )}'
-                    )">
+                        showPage('profile')
+                    ">
 
-                    ${
-                        request.status ===
-                        "Accepted"
-                        ?
-                        "Accepted"
-                        :
-                        "Accept"
-                    }
+                    Edit Profile
 
                 </button>
 
             </div>
 
+
+
+            <div class="card">
+
+                <h3>
+                    🤝 Join Requests
+                </h3>
+
+                <p
+                    style="
+                    font-size:28px;
+                    font-weight:800;
+                    color:#5b21b6">
+
+                    ${joinRequests.length}
+
+                </p>
+
+                <p class="muted">
+
+                    Requests sent from this browser.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="card">
+
+                <h3>
+                    🔐 Team Workspace
+                </h3>
+
+                <p>
+                    Private discussion for
+                    accepted team members.
+                </p>
+
+
+                <button
+                    class="smallbtn"
+                    onclick="
+                        showPage('projects')
+                    ">
+
+                    Open Projects
+
+                </button>
+
+            </div>
+
+
+        </div>
+
+
+        ${
+            joinRequests.length
+
+            ?
+
             `
-        )
-        .join("");
 
-    }
+            <div
+                class="card"
+                style="margin-top:20px">
 
-    else{
+                <h3>
+                    My Requests
+                </h3>
 
-        requestHTML =
-        "<p class='muted'>No join requests yet.</p>";
 
-    }
+                ${joinRequests
+                    .map(
+                        r => `
 
+                        <div class="skill-row">
 
-    document.getElementById(
-        "teamContent"
-    ).innerHTML = `
+                            <span>
 
-    <h2>
-        🏆 ${escapeHTML(
-            project.title
-        )}
-    </h2>
+                                <b>
+                                    ${escapeHTML(
+                                        r.project
+                                    )}
+                                </b>
 
+                                <br>
 
-    <p class="muted">
+                                <small>
 
-        ${escapeHTML(
-            project.description
-        )}
+                                    ${escapeHTML(
+                                        r.reason
+                                    )}
 
-    </p>
+                                </small>
 
+                            </span>
 
-    <br>
 
+                            <span>
+                                ${r.status}
+                            </span>
 
-    <h3>
-        👥 Team Members
-        (${project.members.length}/${project.teamSize})
-    </h3>
+                        </div>
 
+                        `
+                    )
+                    .join("")
+                }
 
-    ${project.members
-    .map(
-        member =>
-        `
+            </div>
 
-        <div class="member">
+            `
 
-            👤
+            :
 
-            ${escapeHTML(member)}
+            `
 
-            <span>
-                Member
-            </span>
+            <div
+                class="empty"
+                style="margin-top:20px">
 
-        </div>
+                You have not sent
+                any join requests yet.
 
-        `
-    ).join("")}
+            </div>
 
-
-    <br>
-
-
-    <h3>
-        📩 Join Requests
-    </h3>
-
-
-    ${requestHTML}
-
-
-    <br>
-
-
-    <h3>
-        🔒 Private Team Discussion
-    </h3>
-
-
-    <p class="muted">
-
-        Ye discussion public nahi hai.
-
-        Sirf accepted team members
-        is discussion ko dekh sakte hain.
-
-    </p>
-
-
-    <div
-        class="chat-box"
-        id="chatBox">
-
-        ${renderMessages(id)}
-
-    </div>
-
-
-    <div class="chat-input">
-
-        <input
-            id="chatInput"
-            placeholder="Write team message..."
-        >
-
-
-        <button
-            class="primary"
-            onclick="sendMessage(${id})">
-
-            Send
-
-        </button>
-
-    </div>
-
-    `;
-
-
-    document.getElementById(
-        "teamModal"
-    ).style.display =
-    "flex";
-
-}
-
-
-
-/* =====================================================
-   ACCEPT REQUEST
-===================================================== */
-
-function acceptRequest(
-    projectID,
-    studentName
-){
-
-    let project =
-    projects.find(
-        p => p.id === projectID
-    );
-
-
-    if(
-        project.members.length >=
-        project.teamSize
-    ){
-
-        alert(
-            "This team is already full."
-        );
-
-        return;
-
-    }
-
-
-    if(
-        !project.members.includes(
-            studentName
-        )
-    ){
-
-        project.members.push(
-            studentName
-        );
-
-    }
-
-
-    joinRequests.forEach(
-        request => {
-
-            if(
-                request.projectId === projectID
-                &&
-                request.name === studentName
-            ){
-
-                request.status =
-                "Accepted";
-
-            }
+            `
 
         }
-    );
-
-
-    saveData();
-
-    updateStats();
-
-    renderProjects();
-
-    openTeam(projectID);
-
-}
-
-
-
-/* =====================================================
-   PRIVATE CHAT
-===================================================== */
-
-function renderMessages(
-    id
-){
-
-    let list =
-    messages[id] || [];
-
-
-    if(!list.length){
-
-        return `
-        <p class="muted">
-            No messages yet.
-            Start your private team discussion.
-        </p>
-        `;
-
-    }
-
-
-    return list
-    .map(
-        message =>
-        `
-
-        <div class="message">
-
-            <b>
-                ${escapeHTML(
-                    message.name
-                )}
-            </b>
-
-            <br>
-
-            ${escapeHTML(
-                message.text
-            )}
-
-        </div>
-
-        `
-    )
-    .join("");
-
-}
-
-
-
-/* =====================================================
-   SEND MESSAGE
-===================================================== */
-
-function sendMessage(
-    id
-){
-
-    let input =
-    document.getElementById(
-        "chatInput"
-    );
-
-
-    if(
-        !input.value.trim()
-    ){
-
-        return;
-
-    }
-
-
-    if(
-        !messages[id]
-    ){
-
-        messages[id] = [];
-
-    }
-
-
-    messages[id].push({
-
-        name:
-        profile.name || "Student",
-
-        text:
-        input.value.trim()
-
-    });
-
-
-    saveData();
-
-
-    openTeam(id);
-
-}
-
-
-
-/* =====================================================
-   PROFILE
-===================================================== */
-
-function loadProfile(){
-
-    document.getElementById(
-        "profileName"
-    ).value =
-    profile.name || "";
-
-
-    document.getElementById(
-        "profileCourse"
-    ).value =
-    profile.course ||
-    "BCA • 5th Semester";
-
-
-    document.getElementById(
-        "profileSkills"
-    ).value =
-    (
-        profile.skills || []
-    ).join(", ");
-
-
-    document.getElementById(
-        "profileLevels"
-    ).value =
-    Object
-    .entries(
-        profile.levels || {}
-    )
-    .map(
-        ([skill,level]) =>
-        skill + "-" + level
-    )
-    .join(", ");
-
-
-    document.getElementById(
-        "profileInterest"
-    ).value =
-    profile.interest || "";
-
-
-    document.getElementById(
-        "profileAbout"
-    ).value =
-    profile.about || "";
-
-}
-
-
-
-/* =====================================================
-   SAVE PROFILE
-===================================================== */
-
-function saveProfile(){
-
-    let name =
-    document
-    .getElementById(
-        "profileName"
-    )
-    .value
-    .trim();
-
-
-    if(!name){
-
-        alert(
-            "Please enter your name."
-        );
-
-        return;
-
-    }
-
-
-    profile.name =
-    name;
-
-
-    profile.course =
-    document
-    .getElementById(
-        "profileCourse"
-    )
-    .value
-    .trim();
-
-
-    profile.skills =
-    document
-    .getElementById(
-        "profileSkills"
-    )
-    .value
-    .split(",")
-    .map(
-        x => x.trim()
-    )
-    .filter(Boolean);
-
-
-    profile.levels = {};
-
-
-    document
-    .getElementById(
-        "profileLevels"
-    )
-    .value
-    .split(",")
-    .forEach(
-        item => {
-
-            let parts =
-            item.split("-");
-
-
-            if(
-                parts[0] &&
-                parts[1]
-            ){
-
-                profile.levels[
-                    parts[0].trim()
-                ] =
-                parts
-                .slice(1)
-                .join("-")
-                .trim();
-
-            }
-
-        }
-    );
-
-
-    profile.interest =
-    document
-    .getElementById(
-        "profileInterest"
-    )
-    .value
-    .trim();
-
-
-    profile.about =
-    document
-    .getElementById(
-        "profileAbout"
-    )
-    .value
-    .trim();
-
-
-    registered = true;
-
-
-    saveData();
-
-
-    updateStats();
-
-
-    document.getElementById(
-        "profileMessage"
-    ).innerHTML = `
-
-    <div class="success">
-
-        ✅ Profile saved successfully!
-
-        <br><br>
-
-        You are now available
-        for AI team matching.
-
-    </div>
 
     `;
 
 }
 
 
+/* =========================================================
+                     ESCAPE HTML
+========================================================= */
 
-/* =====================================================
-   POST IDEA
-===================================================== */
+function escapeHTML(str){
 
-function openPost(){
+    return String(str)
+        .replace(
+            /[&<>"']/g,
 
-    document.getElementById(
-        "postModal"
-    ).style.display =
-    "flex";
+            function(m){
 
-}
+                return {
 
+                    "&":"&amp;",
+                    "<":"&lt;",
+                    ">":"&gt;",
+                    '"':"&quot;",
+                    "'":"&#039;"
 
-function closePost(){
-
-    document.getElementById(
-        "postModal"
-    ).style.display =
-    "none";
-
-}
-
-
-
-/* =====================================================
-   POST IDEA FUNCTION
-===================================================== */
-
-function postIdea(){
-
-    let title =
-    document.getElementById(
-        "newTitle"
-    ).value.trim();
-
-
-    let description =
-    document.getElementById(
-        "newDescription"
-    ).value.trim();
-
-
-    let domain =
-    document.getElementById(
-        "newDomain"
-    ).value;
-
-
-    let teamSize =
-    Number(
-        document.getElementById(
-            "newTeamSize"
-        ).value
-    );
-
-
-    let skills =
-    document.getElementById(
-        "newSkills"
-    ).value
-    .split(",")
-    .map(
-        x => x.trim()
-    )
-    .filter(Boolean);
-
-
-    if(
-        !title ||
-        !description ||
-        !skills.length
-    ){
-
-        alert(
-            "Please fill all details."
-        );
-
-        return;
-
-    }
-
-
-    if(
-        teamSize < 1 ||
-        teamSize > 6
-    ){
-
-        alert(
-            "Team size maximum 6 members hai."
-        );
-
-        return;
-
-    }
-
-
-    let newProject = {
-
-        id:
-        Date.now(),
-
-        title:
-        title,
-
-        description:
-        description,
-
-        domain:
-        domain,
-
-        skills:
-        skills,
-
-        teamSize:
-        teamSize,
-
-        creator:
-        profile.name ||
-        "Sakshi",
-
-        members:
-        [
-            profile.name ||
-            "Sakshi"
-        ],
-
-        active:
-        true
-
-    };
-
-
-    projects.unshift(
-        newProject
-    );
-
-
-    saveData();
-
-
-    updateStats();
-
-
-    closePost();
-
-
-    document.getElementById(
-        "newTitle"
-    ).value = "";
-
-
-    document.getElementById(
-        "newDescription"
-    ).value = "";
-
-
-    document.getElementById(
-        "newSkills"
-    ).value = "";
-
-
-    renderIdeas();
-
-
-    renderProjects();
-
-
-    showSection(
-        "ideas"
-    );
-
-
-    alert(
-
-        "🎉 Idea posted successfully!\n\n" +
-
-        "AI analysis is ready.\n\n" +
-
-        "Similar idea mile toh AI " +
-
-        "reject nahi karega, improvement " +
-
-        "suggestions dega."
-
-    );
-
-}
-
-
-
-/* =====================================================
-   DASHBOARD
-===================================================== */
-
-function renderDashboard(){
-
-    let myRequests =
-    joinRequests.filter(
-        request =>
-        request.name ===
-        profile.name
-    );
-
-
-    let requestsHTML =
-    "";
-
-
-    if(
-        myRequests.length
-    ){
-
-        requestsHTML =
-        myRequests
-        .map(
-            request => {
-
-                let project =
-                projects.find(
-                    p =>
-                    p.id ===
-                    request.projectId
-                );
-
-
-                return `
-
-                <div class="task">
-
-                    🤝
-
-                    <div>
-
-                        <b>
-                            ${escapeHTML(
-                                project
-                                ?.title ||
-                                "Project"
-                            )}
-                        </b>
-
-                        <br>
-
-                        <small>
-
-                            Status:
-
-                            ${escapeHTML(
-                                request.status
-                            )}
-
-                        </small>
-
-                    </div>
-
-                </div>
-
-                `;
+                }[m];
 
             }
-        )
-        .join("");
-
-    }
-
-    else{
-
-        requestsHTML =
-        "<p class='muted'>No join requests yet.</p>";
-
-    }
-
-
-    document.getElementById(
-        "dashboardContent"
-    ).innerHTML = `
-
-    <div class="card">
-
-        <h2>
-            👤
-
-            ${escapeHTML(
-                profile.name ||
-                "Guest Student"
-            )}
-        </h2>
-
-
-        <p class="muted">
-
-            ${escapeHTML(
-                profile.course ||
-                "BCA"
-            )}
-
-        </p>
-
-
-        <div class="skills">
-
-            ${(profile.skills || [])
-            .map(
-                skill =>
-                `
-                <span class="skill">
-                    ${escapeHTML(skill)}
-                </span>
-                `
-            ).join("")}
-
-        </div>
-
-    </div>
-
-
-    <h2 class="title">
-        📩 My Join Requests
-    </h2>
-
-
-    ${requestsHTML}
-
-
-    <h2 class="title">
-        📋 Team Tasks
-    </h2>
-
-
-    <div class="task">
-
-        <input
-            type="checkbox"
-            onchange="taskProgress()"
-        >
-
-        Create UI Design
-
-    </div>
-
-
-    <div class="task">
-
-        <input
-            type="checkbox"
-            onchange="taskProgress()"
-        >
-
-        Create Student Profile
-
-    </div>
-
-
-    <div class="task">
-
-        <input
-            type="checkbox"
-            onchange="taskProgress()"
-        >
-
-        Build Matching System
-
-    </div>
-
-
-    <div class="task">
-
-        <input
-            type="checkbox"
-            onchange="taskProgress()"
-        >
-
-        Test Application
-
-    </div>
-
-
-    <div
-        id="taskResult"
-        class="info">
-
-        Complete tasks to see progress.
-
-    </div>
-
-    `;
+        );
 
 }
 
 
+/* =========================================================
+                       INITIALIZE
+========================================================= */
 
-/* =====================================================
-   TASK PROGRESS
-===================================================== */
-
-function taskProgress(){
-
-    let tasks =
-    document.querySelectorAll(
-        ".task input"
-    );
-
-
-    let completed =
-    [...tasks]
-    .filter(
-        x => x.checked
-    )
-    .length;
-
-
-    let percent =
-    Math.round(
-        completed /
-        tasks.length *
-        100
-    );
-
-
-    let result =
-    document.getElementById(
-        "taskResult"
-    );
-
-
-    if(result){
-
-        result.innerHTML = `
-
-        📊
-
-        Team Task Progress:
-
-        <b>
-            ${percent}%
-        </b>
-
-        `;
-
-    }
-
-}
-
-
-
-/* =====================================================
-   CLOSE TEAM
-===================================================== */
-
-function closeTeam(){
-
-    document.getElementById(
-        "teamModal"
-    ).style.display =
-    "none";
-
-}
-
-
-
-/* =====================================================
-   ESCAPE HTML
-===================================================== */
-
-function escapeHTML(
-    value
-){
-
-    return String(
-        value ?? ""
-    )
-    .replace(
-        /[&<>"']/g,
-        function(match){
-
-            return {
-
-                "&":"&amp;",
-                "<":"&lt;",
-                ">":"&gt;",
-                '"':"&quot;",
-                "'":"&#039;"
-
-            }[match];
-
-        }
-    );
-
-}
-
-
-
-/* =====================================================
-   START WEBSITE
-===================================================== */
+loadProfile();
 
 updateStats();
 
@@ -3950,9 +3909,12 @@ renderIdeas();
 
 renderProjects();
 
+renderDashboard();
+
+renderSkillGap();
+
 
 </script>
-
 
 </body>
 </html>

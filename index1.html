@@ -803,17 +803,23 @@ section{
 
     <div class="container">
 
-        <div class="page-head">
-            <div>
-                <!-- Upar wala button hata diya hai -->
-                <h2 class="section-title">💡 Project Ideas</h2>
-                <p class="muted">Explore ideas posted by students.</p>
+                <div class="page-head" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 15px;">
+            <div style="display: flex; align-items: flex-start; gap: 12px;">
+                <!-- CHOTA BACK BUTTON HEADING KE LEFT ME -->
+                <button onclick="showPage('home')" style="background: #ede9fe; border: 1px solid #c4b5fd; color: #5b21b6; font-weight: 700; font-size: 13px; padding: 6px 12px; border-radius: 8px; cursor: pointer; margin-top: 5px;">
+                    ← Back
+                </button>
+                <div>
+                    <h2 class="section-title" style="margin: 0;">💡 Project Ideas</h2>
+                    <p class="muted">Explore ideas posted by students.</p>
+                </div>
             </div>
             
             <button class="btn primary" onclick="openPostModal()">
                 + Post New Idea
             </button>
         </div>
+
 
         <div class="searchbar">
 

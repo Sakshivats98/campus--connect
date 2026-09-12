@@ -799,17 +799,13 @@ section{
 <!-- =========================================================
                          IDEAS
 ========================================================= -->
-
 <section id="ideas" class="page hidden">
 
     <div class="container">
 
         <div class="page-head">
             <div>
-                <!-- NEW BACK BUTTON LINK -->
-                <button onclick="showPage('home')" style="background:none; border:none; color:#7c3aed; font-weight:700; font-size:14px; padding:0; margin-bottom:8px; cursor:pointer; display:flex; align-items:center; gap:4px;">
-                    ← Back to Home
-                </button>
+                <!-- Upar wala button hata diya hai -->
                 <h2 class="section-title">💡 Project Ideas</h2>
                 <p class="muted">Explore ideas posted by students.</p>
             </div>
@@ -859,41 +855,33 @@ section{
 
         </div>
 
-
+        <!-- Dynamic grid content area -->
         <div id="ideasGrid" class="grid"></div>
+
+        <!-- NEW BOTTOM BACK BUTTON (Niche center me set kar diya) -->
+        <div style="text-align: center; margin-top: 30px; margin-bottom: 10px;">
+            <button class="btn secondary" onclick="showPage('home')" style="max-width: 250px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-weight: 700;">
+                ← Back to Home
+            </button>
+        </div>
 
     </div>
 
 </section>
-
-
-
 <!-- =========================================================
                          MATCHES
 ========================================================= -->
-
 <section id="matches" class="page hidden">
 
     <div class="container">
 
         <div class="page-head">
-    <div>
-        <!-- NEW BACK BUTTON LINK -->
-        <button onclick="showPage('home')" style="background:none; border:none; color:#7c3aed; font-weight:700; font-size:14px; padding:0; margin-bottom:8px; cursor:pointer; display:flex; align-items:center; gap:4px;">
-            ← Back to Home
-        </button>
-        <h2 class="section-title">🤝 AI Team Matches</h2>
-        <p class="muted">Find students based on skills and interests.</p>
-    </div>
-    <button class="btn primary" onclick="runMatching()">✨ Run AI Matching</button>
-</div>
-
-
-            <button class="btn primary"
-                    onclick="runMatching()">
-                ✨ Run AI Matching
-            </button>
-
+            <div>
+                <!-- Upar wala button hata diya hai -->
+                <h2 class="section-title">🤝 AI Team Matches</h2>
+                <p class="muted">Find students based on skills and interests.</p>
+            </div>
+            <button class="btn primary" onclick="runMatching()">✨ Run AI Matching</button>
         </div>
 
 
@@ -907,6 +895,13 @@ section{
         <div
             id="matchesGrid"
             class="grid">
+        </div>
+
+        <!-- NEW BOTTOM BACK BUTTON (Niche center me set kar diya) -->
+        <div style="text-align: center; margin-top: 30px; margin-bottom: 10px;">
+            <button class="btn secondary" onclick="showPage('home')" style="max-width: 250px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-weight: 700;">
+                ← Back to Home
+            </button>
         </div>
 
     </div>

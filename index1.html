@@ -624,8 +624,6 @@ section{
             skills, ideas and interests to build projects together.
         </p>
 
-        <div class="actions">
-
             <button class="btn primary"
                     onclick="openPostModal()">
                 💡 Post Your Idea
@@ -807,18 +805,17 @@ section{
     <div class="container">
 
         <div class="page-head">
+    <div>
+        <!-- NEW BACK BUTTON LINK -->
+        <button onclick="showPage('home')" style="background:none; border:none; color:#7c3aed; font-weight:700; font-size:14px; padding:0; margin-bottom:8px; cursor:pointer; display:flex; align-items:center; gap:4px;">
+            ← Back to Home
+        </button>
+        <h2 class="section-title">🤝 AI Team Matches</h2>
+        <p class="muted">Find students based on skills and interests.</p>
+    </div>
+    <button class="btn primary" onclick="runMatching()">✨ Run AI Matching</button>
+</div>
 
-            <div>
-
-                <h2 class="section-title">
-                    💡 Project Ideas
-                </h2>
-
-                <p class="muted">
-                    Explore ideas posted by students.
-                </p>
-
-            </div>
 
             <button class="btn primary"
                     onclick="openPostModal()">
@@ -886,18 +883,17 @@ section{
     <div class="container">
 
         <div class="page-head">
+    <div>
+        <!-- NEW BACK BUTTON LINK -->
+        <button onclick="showPage('home')" style="background:none; border:none; color:#7c3aed; font-weight:700; font-size:14px; padding:0; margin-bottom:8px; cursor:pointer; display:flex; align-items:center; gap:4px;">
+            ← Back to Home
+        </button>
+        <h2 class="section-title">🤝 AI Team Matches</h2>
+        <p class="muted">Find students based on skills and interests.</p>
+    </div>
+    <button class="btn primary" onclick="runMatching()">✨ Run AI Matching</button>
+</div>
 
-            <div>
-
-                <h2 class="section-title">
-                    🤝 AI Team Matches
-                </h2>
-
-                <p class="muted">
-                    Find students based on skills and interests.
-                </p>
-
-            </div>
 
             <button class="btn primary"
                     onclick="runMatching()">
@@ -934,18 +930,16 @@ section{
     <div class="container">
 
         <div class="page-head">
+    <div>
+        <!-- NEW BACK BUTTON LINK -->
+        <button onclick="showPage('home')" style="background:none; border:none; color:#7c3aed; font-weight:700; font-size:14px; padding:0; margin-bottom:8px; cursor:pointer; display:flex; align-items:center; gap:4px;">
+            ← Back to Home
+        </button>
+        <h2 class="section-title">🏆 Active Projects</h2>
+        <p class="muted">Projects where teams are forming or working.</p>
+    </div>
+</div>
 
-            <div>
-
-                <h2 class="section-title">
-                    🏆 Active Projects
-                </h2>
-
-                <p class="muted">
-                    Projects where teams are forming or working.
-                </p>
-
-            </div>
 
         </div>
 
@@ -1375,7 +1369,9 @@ section{
 
         </div>
 
-
+        <button class="btn secondary" onclick="closeModal('postModal')" style="margin-right:10px; margin-bottom:10px;">
+            ← Cancel & Go Back
+        </button>
         <button
             class="btn primary"
             onclick="postIdea()">

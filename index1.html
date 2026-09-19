@@ -1557,7 +1557,7 @@ section{
 
 
 
-<script>
+<script type="module">
 
 /* =========================================================
                     SAMPLE PROJECTS
@@ -3943,6 +3943,43 @@ renderProjects();
 renderDashboard();
 
 renderSkillGap();
+
+    // ==========================================
+// GOOGLE FIREBASE CLOUD CONNECT BY GUGU
+// ==========================================
+import { initializeApp } from "https://gstatic.com";
+import { getFirestore, collection, addDoc, getDocs } from "https://gstatic.com";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAzQZ0DGLD8WjWn7in02xD9y7DKPK0pVGA",
+  authDomain: "://firebaseapp.com",
+  projectId: "campus-connect-010",
+  storageBucket: "campus-connect-010.firebasestorage.app",
+  messagingSenderId: "622897115867",
+  appId: "1:622897115867:web:7d7ccc1541d0f446ac12fe",
+  measurementId: "G-HP2GNCGEY4"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+console.log("Gugu Check: Cloud Database Connected Successfully!");
+
+// Cloud me data bhejne ka automatic function
+window.saveIdeaToCloud = async function(projectTitle, projectDesc, skillsNeeded) {
+  try {
+    const docRef = await addDoc(collection(db, "ideas"), {
+      title: projectTitle,
+      description: projectDesc,
+      skills: skillsNeeded,
+      createdAt: new Date().toISOString()
+    });
+    console.log("Wow Sakshi! Idea Cloud me save ho gaya. ID:", docRef.id);
+    return true;
+  } catch (e) {
+    console.error("Oops, data save nahi hua: ", e);
+    return false;
+  }
+};
 
 </script>
 

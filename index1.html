@@ -1762,6 +1762,33 @@ let selectedStudent = null;
 /* =========================================================
                          SAVE
 ========================================================= */
+// ==========================================
+// AUTOMATIC CLOUD SYNC TRIGGER BY GUGU
+// ==========================================
+// Jab bhi local storage me project save hoga, ye automatic cloud me chalajaega
+const originalLocalStorageSetItem = localStorage.setItem;
+localStorage.setItem = function(key, value) {
+    if (key === "cc_projects") {
+        try {
+            const localProjects = JSON.parse(value);
+            const latestProject = localProjects[localProjects.length - 1];
+            
+            // Check agar ye default project nahi hai aur pehle se window variable load hai
+            if (latestProject && latestProject.id > 3 && typeof window.saveIdeaToCloud === "function") {
+                window.saveIdeaToCloud(
+                    latestProject.title,
+                    latestProject.description,
+                    latestProject.skills,
+                    latestProject.domain || "General Web"
+                );
+            }
+        } catch (e) {
+            console.error("Cloud tracking hook issue:", e);
+        }
+    }
+    return originalLocalStorageSetItem.apply(this, arguments);
+};
+// ==========================================
 
 function saveAll(){
 

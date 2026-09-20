@@ -2237,7 +2237,15 @@ function renderIdeas(){
                         Request to Join
 
                     </button>
+${p.owner === (profile.name || "You") ? `
+<button
+    class="smallbtn"
+    onclick="deleteIdea(${p.id})">
 
+    Delete
+
+</button>
+` : ""}
                 </div>
 
             </div>
@@ -2246,7 +2254,30 @@ function renderIdeas(){
         ).join("");
 
 }
+function deleteIdea(id){
+    const p = projects.find(x => x.id === id);
+    if(!p) return;
 
+    if(p.owner !== (profile.name || "You")){
+        alert("You can delete only your own idea.");
+        return;
+    }
+
+    if(!confirm("Are you sure you want to delete this idea?")){
+        return;
+    }
+
+    projects = projects.filter(x => x.id !== id);
+
+    saveAll();
+
+    renderIdeas();
+    updateStats();
+
+    closeModal("ideaModal");
+
+    alert("Idea deleted successfully!");
+}
 
 /* =========================================================
                      IDEA DETAILS

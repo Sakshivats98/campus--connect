@@ -1772,7 +1772,7 @@ localStorage.setItem = function(key, value) {
     if (key === "cc_projects") {
         try {
             const localProjects = JSON.parse(value);
-            const latestProject = localProjects[localProjects.length - 1];
+            const latestProject = localProjects[0];
             
             // Check agar ye default project nahi hai aur pehle se window variable load hai
             if (latestProject && latestProject.id > 3 && typeof window.saveIdeaToCloud === "function") {

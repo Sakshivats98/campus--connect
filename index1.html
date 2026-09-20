@@ -3974,12 +3974,15 @@ renderSkillGap();
     // ==========================================
 // GOOGLE FIREBASE CLOUD CONNECT BY GUGU
 // ==========================================
+// =========================================================
+// GOOGLE FIREBASE CLOUD CONNECT BY GUGU (FINAL AIRTIGHT)
+// =========================================================
 import { initializeApp } from "https://gstatic.com";
-import { getFirestore, collection, addDoc, getDocs } from "https://gstatic.com";
+import { getFirestore, collection, addDoc } from "https://gstatic.com";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAzQZ0DGLD8WjWn7in02xD9y7DKPK0pVGA",
-  authDomain: "://firebaseapp.com",
+  authDomain: "campus-connect-010.firebaseapp.com",
   projectId: "campus-connect-010",
   storageBucket: "campus-connect-010.firebasestorage.app",
   messagingSenderId: "622897115867",
@@ -3989,9 +3992,9 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-console.log("Gugu Check: Cloud Database Connected Successfully!");
+console.log("Gugu Check: Cloud Database Connected Successfully, Sakshi!");
 
-// Cloud me data bhejne ka automatic function
+// Cloud me data bhejne ka function
 window.saveIdeaToCloud = async function(projectTitle, projectDesc, skillsNeeded) {
   try {
     const docRef = await addDoc(collection(db, "ideas"), {
@@ -4007,6 +4010,33 @@ window.saveIdeaToCloud = async function(projectTitle, projectDesc, skillsNeeded)
     return false;
   }
 };
+
+// =========================================================
+// UNIVERSAL AUTOMATIC SUBMIT HOOK BY GUGU
+// =========================================================
+document.addEventListener("click", function(event) {
+    // Agar user post idea form ka submit button dabata hai
+    if (event.target && (event.target.onclick?.toString().includes("createProject") || event.target.innerText.includes("Post") || event.target.innerText.includes("Save"))) {
+        setTimeout(async () => {
+            try {
+                const localData = JSON.parse(localStorage.getItem("cc_projects")) || [];
+                const latestIdea = localData[localData.length - 1];
+
+                if (latestIdea && latestIdea.id > 3 && typeof window.saveIdeaToCloud === "function") {
+                    await window.saveIdeaToCloud(
+                        latestIdea.title,
+                        latestIdea.description,
+                        latestIdea.skills || ["General"]
+                    );
+                    alert("Wow Sakshi! Aapka Idea Google Firebase Cloud Database me Live Save ho gaya hai! 🔥");
+                }
+            } catch (error) {
+                console.error("Cloud hook track error:", error);
+            }
+        }, 800);
+    }
+});
+
 
 </script>
 

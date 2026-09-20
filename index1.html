@@ -3953,12 +3953,12 @@ function escapeHTML(str){
         );
 
 }
-
+</script>
 
 /* =========================================================
                        INITIALIZE
 ========================================================= */
-
+<script>
 loadProfile();
 
 updateStats();
@@ -3970,74 +3970,48 @@ renderProjects();
 renderDashboard();
 
 renderSkillGap();
+</script>
+/* Firebase SDK */ 
+<script src="https://www.gstatic.com/firebasejs/12.19.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore-compat.js"></script>
 
-    // ==========================================
-// GOOGLE FIREBASE CLOUD CONNECT BY GUGU
-// ==========================================
-// =========================================================
-// GOOGLE FIREBASE CLOUD CONNECT BY GUGU (FINAL AIRTIGHT)
-// =========================================================
-import { initializeApp } from "https://gstatic.com";
-import { getFirestore, collection, addDoc } from "https://gstatic.com";
-
+<script>
 const firebaseConfig = {
-  apiKey: "AIzaSyAzQZ0DGLD8WjWn7in02xD9y7DKPK0pVGA",
-  authDomain: "campus-connect-010.firebaseapp.com",
-  projectId: "campus-connect-010",
-  storageBucket: "campus-connect-010.firebasestorage.app",
-  messagingSenderId: "622897115867",
-  appId: "1:622897115867:web:7d7ccc1541d0f446ac12fe",
-  measurementId: "G-HP2GNCGEY4"
+    apiKey: "AIzaSyAzQZ0DGLD8WjWn7in02xD9y7DKPK0pVGA",
+    authDomain: "campus-connect-010.firebaseapp.com",
+    projectId: "campus-connect-010",
+    storageBucket: "campus-connect-010.firebasestorage.app",
+    messagingSenderId: "622897115867",
+    appId: "1:622897115867:web:7d7ccc1541d0f446ac12fe",
+    measurementId: "G-HP2GNCGEY4"
 };
 
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-console.log("Gugu Check: Cloud Database Connected Successfully, Sakshi!");
+firebase.initializeApp(firebaseConfig);
 
-// Cloud me data bhejne ka function
-window.saveIdeaToCloud = async function(projectTitle, projectDesc, skillsNeeded) {
-  try {
-    const docRef = await addDoc(collection(db, "ideas"), {
-      title: projectTitle,
-      description: projectDesc,
-      skills: skillsNeeded,
-      createdAt: new Date().toISOString()
-    });
-    console.log("Wow Sakshi! Idea Cloud me save ho gaya. ID:", docRef.id);
-    return true;
-  } catch (e) {
-    console.error("Oops, data save nahi hua: ", e);
-    return false;
-  }
-};
+window.cloudDB = firebase.firestore();
+ // Save new idea to Firebase Firestore
+window.saveIdeaToCloud = async function(title, description, skills, domain) {
+    try {
+        if (!window.cloudDB) {
+            console.error("Firebase is not connected.");
+            return;
+        }
 
-// =========================================================
-// UNIVERSAL AUTOMATIC SUBMIT HOOK BY GUGU
-// =========================================================
-document.addEventListener("click", function(event) {
-    // Agar user post idea form ka submit button dabata hai
-    if (event.target && (event.target.onclick?.toString().includes("createProject") || event.target.innerText.includes("Post") || event.target.innerText.includes("Save"))) {
-        setTimeout(async () => {
-            try {
-                const localData = JSON.parse(localStorage.getItem("cc_projects")) || [];
-                const latestIdea = localData[localData.length - 1];
+        await window.cloudDB.collection("ideas").add({
+            title: title,
+            description: description,
+            skills: skills || ["General"],
+            domain: domain || "General Web",
+            createdAt: new Date().toISOString()
+        });
 
-                if (latestIdea && latestIdea.id > 3 && typeof window.saveIdeaToCloud === "function") {
-                    await window.saveIdeaToCloud(
-                        latestIdea.title,
-                        latestIdea.description,
-                        latestIdea.skills || ["General"]
-                    );
-                    alert("Wow Sakshi! Aapka Idea Google Firebase Cloud Database me Live Save ho gaya hai! 🔥");
-                }
-            } catch (error) {
-                console.error("Cloud hook track error:", error);
-            }
-        }, 800);
+        console.log("Idea saved to Firebase successfully!");
+    } catch (error) {
+        console.error("Firebase save error:", error);
     }
-});
+};   
 
-
+console.log("Firebase connected successfully!");
 </script>
 
 </body>
